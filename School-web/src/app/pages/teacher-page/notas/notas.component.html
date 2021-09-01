@@ -1,0 +1,730 @@
+<div>
+  <div class="header-notas">
+    <span class="header-title">Registra Calificaciones</span>
+    <button (click)="onCreate()" class="header-button">
+      Ingresar registro
+    </button>
+    <ng-template
+      #contentCreate
+      let-c="close"
+      let-d="dismiss"
+      style="z-index: 9999 !important"
+    >
+      <div class="card">
+        <div class="cerrar">
+          <mat-icon
+            style="margin: 1rem 1rem 0 0; cursor: pointer"
+            (click)="d('Cross click')"
+            >cancel</mat-icon
+          >
+        </div>
+
+        <mat-vertical-stepper
+          #verticalStepper="matVerticalStepper"
+          [linear]="true"
+        >
+          <mat-step [stepControl]="verticalAccountFormGroup">
+            <form [formGroup]="verticalAccountFormGroup">
+              <ng-template matStepLabel>Datos Generales. </ng-template>
+
+              <div class="heading"></div>
+              <div class="subheading">Ingresa los datos requeridos.</div>
+
+              <div class="content" fxLayout="column" fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                  <mat-label>Grado</mat-label>
+                  <mat-select formControlName="grade" required>
+                    <mat-option
+                      *ngFor="let grade of responseGrades"
+                      [value]="grade.grado_id"
+                      >{{ grade.nombre_grado }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Quimestre</mat-label>
+                  <mat-select formControlName="quimestre" required>
+                    <mat-option
+                      *ngFor="let option of quimestreOptions"
+                      [value]="option"
+                      >{{ option }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Fecha</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="picker1"
+                    formControlName="date"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker1"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Desripción</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="description"
+                    style="height: 70px"
+                    required
+                  ></textarea>
+
+                  <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+              </div>
+
+              <div
+                class="actions"
+                fxLayout="row"
+                fxLayoutAlign="end center"
+                fxLayoutGap="8px"
+              >
+                <button
+                  (click)="verticalStepper.reset()"
+                  [disabled]="verticalAccountFormGroup.pristine"
+                  mat-button
+                  type="button"
+                  class="button-color"
+                  style="background-color: lightgray; color: white"
+                >
+                  RESETEAR
+                </button>
+                <button
+                  [disabled]="verticalAccountFormGroup.invalid"
+                  mat-raised-button
+                  matStepperNext
+                  class="button-color"
+                  style="color: white; background-color: #7ed957"
+                  (click)="fistQuery()"
+                >
+                  SIGUIENTE
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="verticalPasswordFormGroup">
+            <form [formGroup]="verticalPasswordFormGroup">
+              <ng-template matStepLabel>Datos Académicos</ng-template>
+
+              <div class="content" fxLayout="column" fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                  <mat-label>Materias</mat-label>
+                  <mat-select
+                    formControlName="subject"
+                    required
+                    (ngModelChange)="onChange($event)"
+                  >
+                    <mat-option
+                      *ngFor="let subject of responseSubjects"
+                      [value]="subject.asignatura_id"
+                      >{{ subject.nombre_asignatura }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Estudiante</mat-label>
+                  <mat-select formControlName="student" required>
+                    <mat-option
+                      *ngFor="let student of responseStudents"
+                      [value]="student._id"
+                      >{{ student.nombres }} {{ student.apellidos }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div
+                class="actions"
+                fxLayout="row"
+                fxLayoutAlign="end center"
+                fxLayoutGap="8px"
+              >
+                <button
+                  color="primary"
+                  mat-button
+                  matStepperPrevious
+                  type="button"
+                  class="button-color"
+                  style="color: white; background-color: #7ed957"
+                >
+                  ANTERIOR
+                </button>
+                <button
+                  [disabled]="verticalPasswordFormGroup.invalid"
+                  color="primary"
+                  mat-raised-button
+                  matStepperNext
+                  class="button-color"
+                  style="color: white"
+                >
+                  SIGUIENTE
+                </button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="verticalConfirmFormGroup">
+            <form [formGroup]="verticalConfirmFormGroup">
+              <ng-template matStepLabel>Confirmación</ng-template>
+
+              <div class="subheading">
+                Confirma el registro de calificaciones.
+              </div>
+
+              <div class="content" fxLayout="column" fxLayoutGap="8px">
+                <mat-checkbox class="checkbox" formControlName="terms">
+                  Acepto que los datos Ingresados son correctos. *
+                </mat-checkbox>
+              </div>
+
+              <div
+                class="actions"
+                fxLayout="row"
+                fxLayoutAlign="end center"
+                fxLayoutGap="8px"
+              >
+                <button
+                  color="primary"
+                  mat-button
+                  matStepperPrevious
+                  type="button"
+                  class="button-color"
+                  style="color: white"
+                >
+                  ANTERIOR
+                </button>
+                <button
+                  (click)="submit()"
+                  [disabled]="verticalConfirmFormGroup.invalid"
+                  color="primary"
+                  mat-raised-button
+                  matStepperNext
+                  class="button-color"
+                  style="color: white"
+                  (click)="d('Cross click')"
+                  (click)="verticalStepper.reset()"
+                  (click)="auxSearch()"
+                >
+                  CREAR REGISTRO
+                </button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-vertical-stepper>
+      </div>
+    </ng-template>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="filtro-busqueda">
+    <div>
+      <form [formGroup]="searchForm">
+        <mat-form-field appearance="outline" style="margin-right: 10px">
+          <mat-label>Materia</mat-label>
+          <mat-select
+            formControlName="subjectSearch"
+            (ngModelChange)="onChange2($event)"
+          >
+            <mat-option value="todos">Todos</mat-option>
+            <mat-option
+              *ngFor="let option2 of responseSubjectsFromOnlyTeacher"
+              [value]="option2.asignatura_id"
+              >{{ option2.nombre_asignatura }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Estudiante</mat-label>
+          <mat-select formControlName="studentSearch">
+            <mat-option value="todos">Todos</mat-option>
+            <mat-option
+              *ngFor="let option of responseStudentsFromOnlyTeacher"
+              [value]="option._id"
+              >{{ option.nombres }} {{ option.apellidos }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <button (click)="searchCalificaciones()">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container registros">
+    <div
+      class="col-md-10"
+      *ngFor="let nota of responseNotas"
+      style="margin-bottom: 3rem"
+    >
+      <ng-template
+        #contentEditQuimestral
+        let-c="close"
+        let-d="dismiss"
+        style="z-index: 9999 !important"
+      >
+        <div class="modal-header" style="background-color: cornflowerblue">
+          <h2 style="color: white">Editar Nota Quimestral</h2>
+        </div>
+        <div class="modal-body1">
+          <div class="container-form login-form">
+            <form
+              class="form-login"
+              [formGroup]="editNotasFormQuimestrar"
+              (ngSubmit)="updateCalificacionQuimestral(f)"
+              #f="ngForm"
+            >
+              <div class="login-notas">
+                <div class="mb-6">
+                  <mat-form-field
+                    appearance="outline"
+                    style="width: 400px; margin-top: 3rem"
+                  >
+                    <mat-label>Nota Quimestral Final</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="notaFinal"
+                      matInput
+                      #fieldEmail
+                      placeholder="Nota Final"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+
+                <div class="modal-buttons" ngbAutofocus>
+                  <button
+                    class="first-button"
+                    color="primary"
+                    type="submit"
+                    mat-flat-button
+                    (click)="d('Cross click')"
+                  >
+                    Actualizar
+                  </button>
+                  <button
+                    class="second-button"
+                    type="button"
+                    (click)="d('Cross click')"
+                    (click)="editNotasForm.reset()"
+                    style="background-color: lightgray"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template
+        #contentEdit
+        let-c="close"
+        let-d="dismiss"
+        style="z-index: 9999 !important"
+      >
+        <div class="modal-header" style="background-color: cornflowerblue">
+          <h2 style="color: white">Editar Calificaciones</h2>
+        </div>
+        <div class="modal-body1">
+          <div class="container-form login-form">
+            <form
+              class="form-login"
+              [formGroup]="editNotasForm"
+              (ngSubmit)="updateCalificacion(f)"
+              #f="ngForm"
+            >
+              <div class="login-notas">
+                <div class="mb-12">
+                  <mat-form-field
+                    appearance="outline"
+                    style="width: 400px; margin-top: 10px"
+                  >
+                    <mat-label>Parcial</mat-label>
+                    <mat-select
+                      formControlName="parcial"
+                      required
+                      (ngModelChange)="onChangeEdit($event)"
+                    >
+                      <mat-option
+                        *ngFor="let option of parcialOptions"
+                        [value]="option"
+                        >{{ option }}</mat-option
+                      >
+                    </mat-select>
+                    <mat-error>Selecciona un parcial</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline" style="width: 400px">
+                    <mat-label>Nota 1</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="nota1"
+                      matInput
+                      #fieldEmail
+                      placeholder="Nota 1"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline" style="width: 400px">
+                    <mat-label>Nota 2</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="nota2"
+                      matInput
+                      #fieldEmail
+                      placeholder="Nota 2"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline" style="width: 400px">
+                    <mat-label>Nota 3</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="nota3"
+                      matInput
+                      #fieldEmail
+                      placeholder="Nota 3"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline" style="width: 400px">
+                    <mat-label>Nota 4</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="nota4"
+                      matInput
+                      #fieldEmail
+                      placeholder="Nota 4"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline" style="width: 400px">
+                    <mat-label>Nota 5</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="nota5"
+                      matInput
+                      #fieldEmail
+                      placeholder="Nota 5"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline" style="width: 400px">
+                    <mat-label>Nota 6</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="nota6"
+                      matInput
+                      #fieldEmail
+                      placeholder="Nota 6"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline" style="width: 400px">
+                    <mat-label>Total</mat-label>
+                    <input
+                      type="number"
+                      name="nombre"
+                      formControlName="total"
+                      matInput
+                      #fieldEmail
+                      placeholder="Total"
+                      maxlength="50"
+                      autocomplete="off"
+                    />
+
+                    <mat-icon matSuffix>grade</mat-icon>
+                  </mat-form-field>
+                </div>
+
+                <div class="modal-buttons" ngbAutofocus>
+                  <button
+                    class="first-button"
+                    color="primary"
+                    type="submit"
+                    mat-flat-button
+                    (click)="d('Cross click')"
+                  >
+                    Actualizar
+                  </button>
+                  <button
+                    class="second-button"
+                    type="button"
+                    (click)="d('Cross click')"
+                    (click)="editNotasForm.reset()"
+                    style="background-color: lightgray"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+      <div class="card p-3 mb-2">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="icon" style="background-color: cornflowerblue">
+              <mat-icon style="color: white">note_alt</mat-icon>
+            </div>
+            <div class="ms-2 c-details">
+              <h4 class="mb-0" style="font-weight: bold">
+                {{ nota.nota_estudiante_nombres }}
+                {{ nota.nota_estudiante_apellidos }}
+              </h4>
+              <span
+                >{{ nota.nota_estudiante_quimestre }} -
+                {{ nota.nota_estudiante_nombre_asignatura }}</span
+              >
+            </div>
+          </div>
+          <div class="badge">
+            <span> {{ nota.nota_estudiante_grado }} </span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p style="font-weight: bold; margin: 0">
+            Descripción:
+            <span style="font-weight: normal">
+              {{ nota.nota_estudiante_descripcion }}
+            </span>
+          </p>
+          <p style="font-weight: bold; margin: 0">
+            Fecha creación:
+            <span style="font-weight: normal"> {{ nota.fecha }} </span>
+          </p>
+          <p style="font-weight: bold">
+            Profesor:
+            <span style="font-weight: normal">
+              {{ nota.nota_estudiante_nombres_profesor }}
+              {{ nota.nota_estudiante_apellidos_profesor }}
+            </span>
+          </p>
+
+          <div class="parcial1">
+            <mat-divider></mat-divider>
+            <div class="notas">
+              <span>Parcial 1.</span>
+              <div class="calificaciones">
+                <!--sobre este iterar-->
+                <div class="puntaje">
+                  <span>Nota 1</span>
+                  <p>{{ nota.parcial1.nota_1 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 2</span>
+                  <p>{{ nota.parcial1.nota_2 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 3</span>
+                  <p>{{ nota.parcial1.nota_3 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 4</span>
+                  <p>{{ nota.parcial1.nota_4 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 5</span>
+                  <p>{{ nota.parcial1.nota_5 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 6</span>
+                  <p>{{ nota.parcial1.nota_6 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span style="color: cornflowerblue"> Total</span>
+                  <p>{{ nota.parcial1.total }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="parcial1">
+            <mat-divider></mat-divider>
+            <div class="notas">
+              <span>Parcial 2</span>
+              <div class="calificaciones">
+                <!--sobre este iterar-->
+                <div class="puntaje">
+                  <span>Nota 1</span>
+                  <p>{{ nota.parcial2.nota_1 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 2</span>
+                  <p>{{ nota.parcial2.nota_2 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 3</span>
+                  <p>{{ nota.parcial2.nota_3 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 4</span>
+                  <p>{{ nota.parcial2.nota_4 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 5</span>
+                  <p>{{ nota.parcial2.nota_5 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 6</span>
+                  <p>{{ nota.parcial2.nota_6 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span style="color: cornflowerblue"> Total</span>
+                  <p>{{ nota.parcial2.total }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="parcial1">
+            <mat-divider></mat-divider>
+            <div class="notas">
+              <span>Parcial 3.</span>
+              <div class="calificaciones">
+                <!--sobre este iterar-->
+                <div class="puntaje">
+                  <span>Nota 1</span>
+                  <p>{{ nota.parcial3.nota_1 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 2</span>
+                  <p>{{ nota.parcial3.nota_2 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 3</span>
+                  <p>{{ nota.parcial3.nota_3 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 4</span>
+                  <p>{{ nota.parcial3.nota_4 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 5</span>
+                  <p>{{ nota.parcial3.nota_5 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 6</span>
+                  <p>{{ nota.parcial3.nota_6 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span style="color: cornflowerblue"> Total</span>
+                  <p>{{ nota.parcial3.total }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 100%"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div class="mt-3 final-card">
+              <div class="final-buttons">
+                <button
+                  mat-icon-button
+                  matTooltip="Editar Notas"
+                  (click)="onEditNota(nota.nota_estudiante_id)"
+                >
+                  <mat-icon>mode_edit</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  matTooltip="Eliminar Registro"
+                  (click)="deleteNotas(nota.nota_estudiante_id)"
+                >
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  matTooltip="Finalizar Registro de notas"
+                  (click)="closeNotas(nota.nota_estudiante_id)"
+                >
+                  <mat-icon>do_disturb</mat-icon>
+                </button>
+              </div>
+
+              <p
+                style="
+                  font-weight: bold;
+                  margin-right: 60px;
+                  color: cornflowerblue;
+                "
+              >
+                <button
+                  mat-icon-button
+                  matTooltip="Editar Nota Quimestral"
+                  (click)="
+                    onEditQuimestral(nota.nota_estudiante_id, nota.nota_final)
+                  "
+                >
+                  <mat-icon style="color: black">mode_edit</mat-icon>
+                </button>
+                Nota Quimestral:
+                <span style="font-weight: normal; color: black">
+                  {{ nota.nota_final }} &nbsp;
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sin-registro" *ngIf="responseNotas?.length == 0">
+      <span>Aun no se ha creado registros.</span>
+    </div>
+  </div>
+</div>

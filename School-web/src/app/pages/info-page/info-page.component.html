@@ -1,0 +1,344 @@
+<body>
+  <!-- Header -->
+  <div class="header-div">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div
+          class="navbar-header logo-div bounceInLeft wow"
+          data-wow-duration="2s"
+        >
+          <a class="navbar-brand" style="font-weight: bold" href="#"
+            >Descubrir</a
+          >
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div>
+          <mat-icon [routerLink]="['/login']" style="cursor: pointer"
+            ><span class="material-icons-outlined">
+              <span class="material-icons-outlined"> account_circle </span>
+            </span></mat-icon
+          >
+          <mat-icon
+            [routerLink]="['/registro']"
+            style="cursor: pointer; padding-left: 30px"
+            ><span class="material-icons-outlined">
+              app_registration
+            </span></mat-icon
+          >
+        </div>
+        <!-- End navbar-collapse -->
+      </div>
+      <!-- End container -->
+    </nav>
+
+    <div class="container wow bounceInDown" data-wow-duration="5s">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8 text-center slide-text">
+          <h1 style="font-weight: bold">Bienvenido</h1>
+          <p>
+            <span style="font-weight: bold; color: black; font-size: 25px"
+              >¿Eres padre de familia?</span
+            >
+            Resgistrate y accede a los beneficios de nuestra plataforma. Recibe
+            noticias y los próximos eventos a realizarse, además puedes
+            consultar las calificaciones de tus niños.
+          </p>
+          <button
+            [routerLink]="['/registro']"
+            class="login-button"
+            color="primary"
+            type="submit"
+            mat-flat-button
+          >
+            Registrate
+          </button>
+          <p style="font-size: 20px; padding-top: 10px">
+            Ya eres miembro?
+            <span
+              [routerLink]="['/login']"
+              style="
+                text-decoration: underline;
+                font-weight: bold;
+                cursor: pointer;
+              "
+              >Inicia sesión</span
+            >
+          </p>
+        </div>
+        <!-- End col-md-8-->
+        <div class="col-md-offset-2"></div>
+        <!-- End col-md-offset-2 -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Contanier -->
+  </div>
+  <!-- End header-div -->
+
+  <!-- Feature -->
+
+  <div class="container" id="features">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="main_heading">
+          <h1 style="font-weight: bold; color: black">Beneficios</h1>
+          <div class="text-center"><span class="underline"></span></div>
+        </div>
+      </div>
+      <!-- End col-md-12 -->
+    </div>
+    <!-- End row -->
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="features-div">
+          <mat-icon>family_restroom</mat-icon>
+          <h4>Registra tu pequeño</h4>
+          <p>
+            Registra información específica de tu niño la cual será útil en caso
+            de emergencias en nuestra guardería
+          </p>
+        </div>
+      </div>
+      <!-- End col-md-3-->
+      <div class="col-md-3 col-sm-6">
+        <div class="features-div">
+          <mat-icon>grade</mat-icon>
+          <h4>Calificaciones</h4>
+          <p>
+            Lleva un control de las calificaciones por materia de tus niños.
+          </p>
+        </div>
+      </div>
+      <!-- End col-md-3-->
+      <div class="col-md-3 col-sm-6">
+        <div class="features-div">
+          <mat-icon>list</mat-icon>
+          <h4>Publicaciones de Eventos</h4>
+          <p>
+            Entérate de los eventos festivos que realizamos y comunicados
+            importantes
+          </p>
+        </div>
+      </div>
+      <!-- End col-md-3-->
+      <div class="col-md-3 col-sm-6">
+        <div class="features-div">
+          <mat-icon>departure_board</mat-icon>
+          <h4>Transporte Escolar</h4>
+          <p>
+            Registrate en el transporte escolar para un retorno seguro a clases
+            y monitoriza mediante la app móvil la ubicación del transportista
+          </p>
+        </div>
+      </div>
+      <!-- End col-md-3-->
+    </div>
+    <!-- End row -->
+  </div>
+  <!-- End Container -->
+
+  <div class="more-feature-div">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="../../../assets/images/general/pc-task.jpg" />
+        </div>
+        <!-- End col-md-6-->
+        <div class="col-md-6">
+          <div class="more-features-div">
+            <mat-icon>schedule</mat-icon>
+
+            <h3 class="more-features-div-heading">Reuniones</h3>
+            <div class="more-features-div-description">
+              Planifica la atención a padres de familia con los profesores de
+              cada área de nuestro centro de desarrollo infantil .
+            </div>
+          </div>
+
+          <div class="more-features-div">
+            <mat-icon>favorite</mat-icon>
+
+            <h3 class="more-features-div-heading">Salud</h3>
+            <div class="more-features-div-description">
+              La salud de nuestros infantes es importante, por lo tanto mantente
+              al día con las úlitmas noticias de como asistir y protegernos
+              contra el virus.
+            </div>
+          </div>
+        </div>
+        <!-- End col-md-6-->
+      </div>
+      <!-- End row -->
+    </div>
+    <!-- ENd container -->
+  </div>
+
+  <!-- End Feature -->
+
+  <!-- Services -->
+
+  <!-- End Services -->
+
+  <!-- Call to Action -->
+  <div class="call-action-bg" id="Call-to-Action">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="main_heading">
+            <h1 style="font-weight: bold; color: black">
+              Visita nuestras instalaciones
+            </h1>
+            <div class="text-center"><span class="underline"></span></div>
+          </div>
+        </div>
+        <!-- End col-md-12 -->
+      </div>
+      <!-- End row -->
+
+      <div class="col-md-12"></div>
+      <!-- End col-md-12-->
+    </div>
+    <!-- End container -->
+  </div>
+
+  <!-- End Call to Action -->
+
+  <!-- Price Table -->
+
+  <!-- End Price Table -->
+
+  <!-- About -->
+  <div class="container" id="About">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="main_heading">
+          <h1>Acerca de nosotros</h1>
+          <div class="text-center"><span class="underline"></span></div>
+        </div>
+      </div>
+      <!-- End col-md-12 -->
+    </div>
+    <!-- End row -->
+
+    <div class="row">
+      <div class="col-md-4 about-us-box wow fadeInUp animated">
+        <div class="about-us-photo">
+          <img src="../../../assets/images/general/1.jpg" alt="" />
+          <div class="about-us-role">Educación</div>
+        </div>
+        <h3>Profesores Capacitados</h3>
+        <p>Contamos con una certificación profesional en enseñanza.</p>
+      </div>
+
+      <div class="col-md-4 about-us-box wow fadeInUp animated">
+        <div class="about-us-photo">
+          <img src="../../../assets/images/general/2.jpg" alt="" />
+          <div class="about-us-role">Tecnología</div>
+        </div>
+        <h3>Enseñanza</h3>
+        <p>
+          El método de enseñanza es muy importante, procuramos aprender de la
+          tecnología.
+        </p>
+      </div>
+
+      <div class="col-md-4 about-us-box wow fadeInUp animated">
+        <div class="about-us-photo">
+          <img src="../../../assets/images/general/3.jpg" alt="" />
+          <div class="about-us-role">Atención</div>
+        </div>
+        <h3>Servicio</h3>
+        <p>Brindamos la mejor atención a padres de familia.</p>
+      </div>
+    </div>
+    <!-- End row -->
+  </div>
+  <!-- End container -->
+  <!-- End About -->
+
+  <!-- Testimonial -->
+  <div class="call-action-color" id="Testimonial">
+    <div class="container">
+      <div class="row">
+        <!-- End col-md-12 -->
+      </div>
+      <!-- End row -->
+
+      <div class="container" id="features">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="main_heading">
+              <h1 style="font-weight: bold; color: white">
+                Comunicate con nosotros
+              </h1>
+              <div class="text-center"><span class="underline"></span></div>
+            </div>
+          </div>
+          <!-- End col-md-12 -->
+        </div>
+        <!-- End row -->
+
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="features-div">
+              <mat-icon style="color: black">facebook</mat-icon>
+              <h4 style="color: white">@Descubrir</h4>
+            </div>
+          </div>
+          <!-- End col-md-3-->
+          <div class="col-md-4 col-sm-6">
+            <div class="features-div">
+              <mat-icon style="color: black">phone</mat-icon>
+              <h4 style="color: white">0989232312</h4>
+            </div>
+          </div>
+          <!-- End col-md-3-->
+          <div class="col-md-4 col-sm-6">
+            <div class="features-div">
+              <mat-icon style="color: black">mail_outline</mat-icon>
+              <h4 style="color: white">centro.descubrir@gmal.com</h4>
+            </div>
+          </div>
+          <!-- End col-md-3-->
+
+          <!-- End col-md-3-->
+        </div>
+        <!-- End row -->
+      </div>
+      <!-- End Container -->
+
+      <!-- End col-md-12-->
+    </div>
+    <!-- End container -->
+  </div>
+
+  <!-- End Testimonial -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 footer-social">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-dribbble"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-google-plus"></i></a>
+          <a href="#"><i class="fa fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 footer-copyright">
+          © 2021 All Copyrights reserved - Descubrir
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <script type="text/javascript" src="js/jquery-main.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script src="js/wow.min.js"></script>
+</body>

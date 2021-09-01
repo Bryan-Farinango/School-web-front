@@ -1,0 +1,211 @@
+@import '../../../../assets/styles/styles.scss';
+
+.header-notas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem;
+  .header-title {
+    width: 210px;
+    height: 65px;
+    padding-bottom: 3px;
+    border-radius: 9px;
+    display: flex;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .header-button {
+    margin-right: 2rem;
+    background-color: #7ed957;
+    color: white;
+    font-family: 'Myriad Pro Bold';
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 23px;
+    width: 180px;
+    height: 50px;
+    border: none;
+  }
+
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+    width: 700px !important;
+  }
+}
+.cerrar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+button:disabled {
+  background-color: lightgray !important;
+}
+.filtro-busqueda {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  button {
+    margin-left: 20px;
+    background-color: #7ed957;
+    color: white;
+    font-family: 'Myriad Pro Bold';
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 23px;
+    width: 120px;
+    height: 50px;
+    border: none;
+  }
+}
+
+.sin-registro {
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  span {
+    font-size: 25px;
+    font-weight: 700;
+  }
+}
+
+.registros {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgba(9, 27, 71, 0.55);
+  }
+
+  .c-details span {
+    font-weight: 300;
+    font-size: 13px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px;
+  }
+
+  .badge span {
+    background-color: #00edaa;
+    width: 120px;
+    height: 40px;
+    padding-bottom: 3px;
+    font-size: 16px;
+    border-radius: 5px;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .progress {
+    height: 10px;
+    border-radius: 10px;
+  }
+
+  .progress div {
+    background-color: #00edaa;
+  }
+
+  .text1 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .text2 {
+    color: #a5aec0;
+  }
+}
+
+.notas {
+  margin-bottom: 2rem;
+  span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.calificaciones {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .puntaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 60px;
+  }
+}
+
+.final-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.final-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mat-form-field {
+  margin: 0;
+}
+
+.mat-form-field-appearance-outline {
+  margin: 0;
+}
+.login-notas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  button {
+    margin-bottom: 2rem;
+    margin-left: 20px;
+    background-color: #7ed957;
+    color: white;
+    font-family: 'Myriad Pro Bold';
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 23px;
+    width: 120px;
+    height: 50px;
+    border: none;
+  }
+}

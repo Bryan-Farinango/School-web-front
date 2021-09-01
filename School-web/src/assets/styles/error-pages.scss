@@ -1,0 +1,79 @@
+.error-page-background {
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(204, 204, 204, 0.45) 0%,
+    rgba(221, 221, 221, 0.45) 12%,
+    rgba(233, 233, 233, 0.45) 26%,
+    rgba(240, 240, 240, 0.45) 45%,
+    rgba(242, 242, 242, 0.45) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(204, 204, 204, 0.45) 0%,
+    rgba(221, 221, 221, 0.45) 12%,
+    rgba(233, 233, 233, 0.45) 26%,
+    rgba(240, 240, 240, 0.45) 45%,
+    rgba(242, 242, 242, 0.45) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    -45deg,
+    rgba(204, 204, 204, 0.45) 0%,
+    rgba(221, 221, 221, 0.45) 12%,
+    rgba(233, 233, 233, 0.45) 26%,
+    rgba(240, 240, 240, 0.45) 45%,
+    rgba(242, 242, 242, 0.45) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73cccccc', endColorstr='#73f2f2f2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  @media (max-width: $md) {
+    background: -moz-linear-gradient(
+      48deg,
+      rgba(204, 204, 204, 0.45) 0%,
+      rgba(221, 221, 221, 0.45) 12%,
+      rgba(233, 233, 233, 0.45) 26%,
+      rgba(240, 240, 240, 0.45) 45%,
+      rgba(242, 242, 242, 0.45) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      48deg,
+      rgba(204, 204, 204, 0.45) 0%,
+      rgba(221, 221, 221, 0.45) 12%,
+      rgba(233, 233, 233, 0.45) 26%,
+      rgba(240, 240, 240, 0.45) 45%,
+      rgba(242, 242, 242, 0.45) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      48deg,
+      rgba(204, 204, 204, 0.45) 0%,
+      rgba(221, 221, 221, 0.45) 12%,
+      rgba(233, 233, 233, 0.45) 26%,
+      rgba(240, 240, 240, 0.45) 45%,
+      rgba(242, 242, 242, 0.45) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+  @media (max-width: $sm) {
+    background: -moz-linear-gradient(
+      -42deg,
+      rgba(204, 204, 204, 0.45) 0%,
+      rgba(221, 221, 221, 0.45) 12%,
+      rgba(233, 233, 233, 0.45) 26%,
+      rgba(240, 240, 240, 0.45) 45%,
+      rgba(242, 242, 242, 0.45) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      -42deg,
+      rgba(204, 204, 204, 0.45) 0%,
+      rgba(221, 221, 221, 0.45) 12%,
+      rgba(233, 233, 233, 0.45) 26%,
+      rgba(240, 240, 240, 0.45) 45%,
+      rgba(242, 242, 242, 0.45) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      -42deg,
+      rgba(204, 204, 204, 0.45) 0%,
+      rgba(221, 221, 221, 0.45) 12%,
+      rgba(233, 233, 233, 0.45) 26%,
+      rgba(240, 240, 240, 0.45) 45%,
+      rgba(242, 242, 242, 0.45) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+}

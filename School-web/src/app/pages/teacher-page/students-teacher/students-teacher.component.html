@@ -1,0 +1,201 @@
+<div>
+  <div style="margin-top: 20px">
+    <span
+      style="
+        margin-left: 20px;
+        font-size: 20px;
+        font-family: 'Myriad Pro Bold';
+        font-weight: 700;
+      "
+      >Filtros de búsqueda</span
+    >
+  </div>
+  <div class="col-md-12 header-content">
+    <span
+      style="
+        font-size: 16px;
+        font-family: 'Myriad Pro Semi Bold';
+        font-weight: 700;
+      "
+      >Grado Escolar:</span
+    >
+    <form [formGroup]="gradeForm" #f="ngForm">
+      <select
+        class="form-select"
+        formControlName="grade"
+        (ngModelChange)="onChange($event)"
+      >
+        <option value="todos">Todos</option>
+        <option *ngFor="let grade of responseGrades" [value]="grade.grado_id">
+          {{ grade.nombre_grado }}
+        </option>
+      </select>
+    </form>
+    <span
+      style="
+        margin-left: 22px;
+        font-size: 16px;
+        font-family: 'Myriad Pro Semi Bold';
+        font-weight: 700;
+      "
+      >Materia :</span
+    >
+    <form [formGroup]="materiaForm" #f="ngForm">
+      <select class="form-select" formControlName="subject">
+        <option value="todos">Todos</option>
+        <option
+          *ngFor="let subject of responseSubjects"
+          [value]="subject.asignatura_id"
+        >
+          {{ subject.nombre_asignatura }}
+        </option>
+      </select>
+    </form>
+
+    <button class="button-search" (click)="search()">Buscar</button>
+  </div>
+
+  <mat-divider></mat-divider>
+  <div class="row">
+    <div class="col-md-4 col-xl-3" *ngFor="let student of responseStudents">
+      <ng-template
+        #contentSend
+        let-c="close"
+        let-d="dismiss"
+        style="z-index: 9999 !important"
+      >
+        <div class="modal-header">
+          <h2>Enviar comunicado</h2>
+        </div>
+        <div class="modal-body1">
+          <div class="container-form login-form">
+            <form
+              class="form-login"
+              [formGroup]="notificationForm"
+              (ngSubmit)="sendNotification(f)"
+              #f="ngForm"
+            >
+              <div class="login">
+                <div class="mb-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Título del comunicado</mat-label>
+                    <input
+                      type="text"
+                      name="nombre"
+                      formControlName="title"
+                      matInput
+                      #fieldEmail
+                      required
+                      placeholder="Título"
+                      maxlength="50"
+                    />
+
+                    <mat-icon matSuffix>menu_book</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Materia</mat-label>
+                    <mat-select formControlName="subject" required>
+                      <mat-option
+                        *ngFor="let option of responseMaterias"
+                        [value]="option.materia_id"
+                        >{{ option.nombre_asignatura }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tema</mat-label>
+                    <mat-select formControlName="topic" required>
+                      <mat-option
+                        *ngFor="let option of topicOption"
+                        [value]="option"
+                        >{{ option }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Fecha</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="picker1"
+                      formControlName="date"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker1"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="mb-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Mensaje</mat-label>
+                    <textarea
+                      matInput
+                      formControlName="message"
+                      style="height: 70px"
+                      required
+                    ></textarea>
+
+                    <mat-icon matSuffix>description</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="modal-buttons" ngbAutofocus>
+                  <button
+                    class="first-button"
+                    color="primary"
+                    type="submit"
+                    mat-flat-button
+                    (click)="d('Cross click')"
+                  >
+                    Enviar
+                  </button>
+                  <button
+                    class="second-button"
+                    type="button"
+                    (click)="d('Cross click')"
+                    (click)="notificationForm.reset()"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+      <div class="card bg-c-blue order-card">
+        <div class="card-block">
+          <span class="m-b-20" style="font-weight: 500">
+            {{ student.nombres }} <br />
+            {{ student.apellidos }}
+          </span>
+          <mat-divider
+            style="margin-top: 5px; background-color: white"
+          ></mat-divider>
+          <h2 class="text-right">
+            <span> {{ student.edad }} años</span>
+          </h2>
+          <p class="m-b-0">
+            <button
+              mat-icon-button
+              matTooltip="Enviar Comunicado"
+              (click)="openNotification(student._id, student.usuario_id)"
+            >
+              <mat-icon>email</mat-icon>
+            </button>
+            <span class="f-right"><mat-icon>badge</mat-icon> </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="empty-response" *ngIf="responseStudents?.length == 0">
+      No se encontraron registros
+    </div>
+  </div>
+</div>

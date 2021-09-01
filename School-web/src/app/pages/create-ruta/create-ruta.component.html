@@ -1,0 +1,146 @@
+<div class="color-header"></div>
+<div class="container-fluid background-layout-login">
+  <br />
+  <br />
+  <div class="card">
+    <div class="login-form3">
+      <div class="col-md-12">
+        <br /><br /><br />
+
+        <div class="container-form">
+          <form
+            class="form-login3"
+            [formGroup]="rutaForm"
+            (ngSubmit)="onRegister(f)"
+            #f="ngForm"
+          >
+            <div class="login">
+              <h1>Crea una Ruta</h1>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Título de la ruta</mat-label>
+                <input
+                  type="text"
+                  name="nombre"
+                  formControlName="title"
+                  matInput
+                  #fieldEmail
+                  required
+                  placeholder="Nombre"
+                  maxlength="50"
+                />
+
+                <mat-icon matSuffix>menu_book</mat-icon>
+              </mat-form-field>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  flex-wrap: wrap;
+                "
+              >
+                <mat-form-field appearance="outline" style="width: 45%">
+                  <mat-label>Número de ruta</mat-label>
+
+                  <input
+                    type="text"
+                    name="apellido"
+                    formControlName="number"
+                    matInput
+                    #fieldEmail
+                    required
+                    placeholder="número de ruta"
+                    maxlength="50"
+                  />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" style="width: 50%">
+                  <mat-label>Ciudad</mat-label>
+
+                  <input
+                    type="text"
+                    name="apellido"
+                    formControlName="city"
+                    matInput
+                    #fieldEmail
+                    required
+                    placeholder="número de ruta"
+                    maxlength="50"
+                  />
+                </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Sector 1</mat-label>
+                <input
+                  type="text"
+                  name="nombre"
+                  formControlName="address1"
+                  matInput
+                  #fieldEmail
+                  required
+                  placeholder="Nombre"
+                  maxlength="50"
+                />
+
+                <mat-icon matSuffix>pin_drop</mat-icon>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Sector 2</mat-label>
+                <input
+                  type="text"
+                  name="nombre"
+                  formControlName="address2"
+                  matInput
+                  #fieldEmail
+                  required
+                  placeholder="Nombre"
+                  maxlength="50"
+                />
+
+                <mat-icon matSuffix>pin_drop</mat-icon>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Sector 3</mat-label>
+                <input
+                  type="text"
+                  name="nombre"
+                  formControlName="address3"
+                  matInput
+                  #fieldEmail
+                  required
+                  placeholder="Nombre"
+                  maxlength="50"
+                />
+
+                <mat-icon matSuffix>pin_drop</mat-icon>
+              </mat-form-field>
+
+              <div *ngIf="emailExist" class="text-danger">
+                El email ingresado ya se encuentra registrado <br /><br />
+              </div>
+
+              <button
+                class="login-button"
+                color="primary"
+                type="submit"
+                mat-flat-button
+              >
+                Crear Ruta
+              </button>
+
+              <p class="register-redirect">
+                <a [routerLink]="['/home/rutas']" style="color: black">
+                  ver rutas
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->

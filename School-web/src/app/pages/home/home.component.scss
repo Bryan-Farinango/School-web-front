@@ -1,0 +1,94 @@
+@import '../../../assets/styles/styles.scss';
+
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  min-height: 100vh;
+}
+
+mat-sidenav {
+  width: 280px;
+  background-color: rgb(45, 50, 62);
+}
+
+.logo {
+  padding: 0 24;
+  background-color: rgb(30, 33, 41);
+  color: hsla(0, 0%, 100%, 0.7) !important;
+  min-height: 64px;
+}
+.logo h1 {
+  margin: 0;
+  padding-left: 10px;
+  line-height: 64px;
+}
+.sidenav-items {
+  min-height: 0;
+}
+
+.sidenav-user {
+  text-align: center;
+  margin-bottom: $padding-sm;
+
+  .sidenav-user-image {
+    margin-top: 20px;
+    height: 72px;
+    width: 72px;
+    border-radius: 50%;
+  }
+  .sidenav-user-name {
+    color: white;
+    margin: 0;
+  }
+  .sidenav-user-email {
+    padding-top: 10px;
+    color: white;
+    margin-top: 0;
+  }
+
+  .sidenav-user-icons {
+    justify-content: center;
+    color: white;
+    [mat-icon-button] {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+
+      & + [mat-icon-button] {
+        margin-left: $padding-xxs;
+      }
+    }
+
+    mat-icon {
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
+}
+
+a:hover {
+  color: white;
+}
+
+.wrapCount {
+  position: relative;
+
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background-color: #7ed957;
+  border-radius: 50%;
+  span {
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Myriad Pro Regular', serif;
+    font-size: 22px;
+    letter-spacing: -0.22px;
+    line-height: unset;
+  }
+}

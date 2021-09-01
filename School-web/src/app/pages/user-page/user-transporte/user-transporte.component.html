@@ -1,0 +1,278 @@
+<div class="header"></div>
+<div class="container">
+  <div *ngIf="step === 1">
+    <article class="postcard dark blue">
+      <a class="postcard__img_link" href="#">
+        <img
+          class="postcard__img"
+          src="../../../../assets/images/general/bus-image.png"
+          alt="Image Title"
+        />
+      </a>
+      <div class="postcard__text">
+        <h1 class="postcard__title blue"><a>Transporte Escolar</a></h1>
+        <div class="postcard__subtitle small">
+          <time datetime="2020-05-25 12:00:00">
+            <i class="fas fa-calendar-alt mr-2"></i
+            >{{ currentDate | date: 'yyyy-MM-dd' }}
+          </time>
+        </div>
+        <div class="postcard__bar"></div>
+        <div class="postcard__preview-txt">
+          Brindamos un trasporte seguro con todas las medidas de bioseguridad
+          para tu pequeño. Al inscribirte en el transporte tienes acceso a la
+          aplicación móvil del Centro de Desarrollo Infantil Descubrir. Podrás
+          recibir comunidados del transportista en la ruta que te inscribas,
+          para poder acceder al registro de transporte Escolar descargate la app
+          movil y regístrate con el mismo correo electrónico de tu cuenta
+          actual.
+        </div>
+        <ul class="postcard__tagbox">
+          <li class="tag__item">
+            <i class="fas fa-tag mr-2"></i>DESCARGAR APP
+          </li>
+          <mat-icon style="margin-top: 5px">phone_iphone</mat-icon>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <!--PASO 2 CUANDO YA SE REGISTRA EN LA APP MOVIL-->
+  <div *ngIf="step === 2" class="second-step">
+    <h2 style="font-weight: bold; margin-top: 3rem">Rutas Disponibles</h2>
+    <div
+      class="col-md-8"
+      style="margin-top: 3rem"
+      *ngFor="let ruta of responseRutas"
+    >
+      <ng-template
+        #contentTransporte
+        let-c="close"
+        let-d="dismiss"
+        style="z-index: 9999 !important"
+      >
+        <div class="modal-header" style="background-color: cornflowerblue">
+          <h2 style="color: white">Transporte Escolar</h2>
+        </div>
+        <div class="modal-body1">
+          <div class="container-form matricula-form">
+            <form
+              class="form-login"
+              [formGroup]="transporteForm"
+              (ngSubmit)="onMatricular(f)"
+              #f="ngForm"
+            >
+              <div class="form-matricula" style="margin-top: 10px">
+                <div
+                  class="mb-6"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                  "
+                >
+                  <span style="font-weight: bold"
+                    >Estudiantes no matrículados en Tranporte</span
+                  >
+                  <br />
+                  <br />
+                  <mat-form-field
+                    appearance="outline"
+                    style="margin-right: 10px"
+                  >
+                    <mat-label>Estudiantes</mat-label>
+                    <mat-select formControlName="student">
+                      <mat-option
+                        *ngFor="let option of responseStudents"
+                        [value]="option._id"
+                        >{{ option.nombres }} {{ option.apellidos }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="modal-buttons" ngbAutofocus>
+                  <button
+                    class="first-button"
+                    color="primary"
+                    type="submit"
+                    mat-flat-button
+                    (click)="d('Cross click')"
+                    style="margin-right: 10px"
+                  >
+                    Aceptar
+                  </button>
+                  <button
+                    class="second-button"
+                    type="button"
+                    (click)="d('Cross click')"
+                    (click)="transporteForm.reset()"
+                    style="background-color: lightgray"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+      <div class="card p-2 text-center">
+        <div class="row">
+          <div class="col-md-7 border-right no-gutters">
+            <div class="py-3">
+              <img
+                src="../../../../assets/images/general/bus.png"
+                style="width: 100px"
+                class="rounded-circle"
+              />
+              <h4 class="text-secondary" style="font-weight: bold">
+                {{ ruta.ruta_titulo }}
+              </h4>
+              <div class="allergy">
+                <span
+                  >Ruta. {{ ruta.ruta_numero }}, {{ ruta.ruta_ciudad }}</span
+                >
+              </div>
+              <div class="stats">
+                <table class="table table-borderless">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex flex-column">
+                          <span
+                            class="text-left bottom"
+                            style="font-weight: bold; color: black"
+                            >SECTORES</span
+                          >
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex flex-column">
+                          <span class="text-left bottom">{{
+                            ruta.ruta_sector1
+                          }}</span>
+                          <span class="text-left bottom">{{
+                            ruta.ruta_sector2
+                          }}</span>
+                          <span class="text-left bottom">{{
+                            ruta.ruta_sector3
+                          }}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="">
+                <!--
+                <span
+                  style="
+                    border: none;
+                    width: 80px;
+                    text-align: center;
+                    background-color: #7ed957;
+                    padding: 5px;
+                    color: white;
+                    border-radius: 5px;
+                  "
+                  >Disponible</span
+                >
+                -->
+                <br />
+                <br />
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <mat-icon style="color: cornflowerblue; margin-right: 10px"
+                    >groups</mat-icon
+                  >
+                  <span>
+                    {{ responseInscritos?.length }} estudiantes inscritos
+                  </span>
+                </div>
+
+                <br />
+                <button
+                  type="button"
+                  class="btn btn-primary btn-block"
+                  (click)="onCreate(ruta.ruta_id)"
+                >
+                  Inscribirse
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="py-3">
+              <h2 style="font-weight: bold; color: cornflowerblue">
+                Transportista
+              </h2>
+              <div>
+                <span
+                  class="d-block head"
+                  style="font-weight: bold; color: black"
+                  >Nombres y apellidos</span
+                >
+                <span class="bottom"
+                  >{{ ruta.transportista_nombres }}
+                  {{ ruta.transportista_apellidos }}
+                </span>
+              </div>
+              <div class="mt-4">
+                <span
+                  class="d-block head"
+                  style="font-weight: bold; color: black"
+                  >Capacidad de Transporte</span
+                >
+                <span class="bottom"
+                  >{{ ruta.transportista_capacidad }} pasajeros</span
+                >
+              </div>
+              <div class="mt-4">
+                <span
+                  class="d-block head"
+                  style="font-weight: bold; color: black"
+                  >Teléfono</span
+                >
+                <span class="bottom">{{ ruta.transportista_telefono }}</span>
+              </div>
+              <div class="mt-4">
+                <span
+                  class="d-block head"
+                  style="font-weight: bold; color: black"
+                  >Email contacto</span
+                >
+                <span class="bottom">{{ ruta.transportista_email }}</span>
+              </div>
+              <div class="mt-4">
+                <span
+                  class="d-block head"
+                  style="font-weight: bold; color: black"
+                  >Experiencia Laboral</span
+                >
+                <span class="bottom">{{ ruta.transportista_experiencia }}</span>
+              </div>
+              <div class="mt-4">
+                <span style="font-weight: bold">Estudiantes Inscritos</span>
+                <br />
+                <span *ngFor="let ins of responseInscritos">
+                  {{ ins.matricula_nombres }}
+                  {{ ins.matricula_apellidos }}<br />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="container-fluid background-layout-login">
+  <div class="login-bg"></div>
+  <div class="login-form">
+    <div class="col-md-6 offset-md-3">
+      <br />
+      <app-layout-login-header></app-layout-login-header>
+      <br /><br />
+      <div class="container-form">
+        <form
+          class="form-login"
+          [formGroup]="resetPasswordForm"
+          (ngSubmit)="onResetPassword(f)"
+          #f="ngForm"
+        >
+          <div class="login">
+            <h1>Restablece tu contraseña</h1>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Contraseña nueva</mat-label>
+              <input
+                matInput
+                #password
+                [type]="hide ? 'password' : 'text'"
+                name="password"
+                required
+                minlength="10"
+                formControlName="password"
+                placeholder="prueba123"
+                (ngModelChange)="
+                  checkEqualPassword(repeatPassword.value, password.value)
+                "
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                (click)="hide = !hide"
+              >
+                <mat-icon>lock</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="
+                  f.submitted &&
+                  resetPasswordForm.controls['password'].hasError('required')
+                "
+              >
+                Introduce una contraseña
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Confirma tu contraseña</mat-label>
+              <input
+                [type]="hide2 ? 'password' : 'text'"
+                matInput
+                #repeatPassword
+                [type]="showRepeatPassword ? 'text' : 'password'"
+                name="repeatPassword"
+                required
+                minlength="10"
+                formControlName="repeatPassword"
+                placeholder="prueba123"
+                (ngModelChange)="
+                  checkEqualPassword(repeatPassword.value, password.value)
+                "
+              />
+
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                (click)="hide2 = !hide2"
+              >
+                <mat-icon>lock</mat-icon>
+              </button>
+            </mat-form-field>
+            <div
+              *ngIf="
+                f.touched &&
+                resetPasswordForm.controls['password'].hasError('minlength')
+              "
+              class="text-danger"
+            >
+              Tu contraseña no es lo suficientemente segura. La contraseña debe
+              tener por lo menos 10 caracteres. <br /><br />
+            </div>
+            <div *ngIf="errorAuth" class="text-danger">
+              El tiempo ha expirado, &nbsp;
+              <span
+                [routerLink]="['/recuperar-contrasena']"
+                style="
+                  color: #7ed957;
+                  cursor: pointer;
+                  text-decoration: underline;
+                "
+              >
+                vuelve a intentarlo
+              </span>
+              <br /><br />
+            </div>
+            <div *ngIf="differentPassword" class="text-danger">
+              Las contraseñas no coinciden <br /><br />
+            </div>
+            <button
+              class="login-button"
+              color="primary"
+              type="submit"
+              mat-flat-button
+            >
+              Cambiar contraseña
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->

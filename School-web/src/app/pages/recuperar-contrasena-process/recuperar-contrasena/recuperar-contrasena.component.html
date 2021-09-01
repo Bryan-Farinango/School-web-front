@@ -1,0 +1,45 @@
+<div class="container-fluid background-layout-login">
+  <div class="login-bg"></div>
+  <div class="login-form">
+    <div class="col-md-6 offset-md-3">
+      <br />
+      <app-layout-login-header></app-layout-login-header>
+      <br /><br />
+      <div class="container-form">
+        <form class="form-login" (ngSubmit)="onReset(f)" #f="ngForm">
+          <div class="login">
+            <h1>Ingresa tu correo electrónico</h1>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Correo</mat-label>
+              <input
+                matInput
+                type="email"
+                name="email"
+                required
+                email
+                [formControl]="userEmail"
+                placeholder="test@test.com"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error *ngIf="f.submitted && userEmail.hasError('required')">
+                Introduce tu correo
+              </mat-error>
+            </mat-form-field>
+            <div *ngIf="errorAuth" class="text-danger">
+              Correo electrónico no encontrado <br /><br />
+            </div>
+
+            <button class="login-button" color="primary" mat-flat-button>
+              Enviar
+            </button>
+            <p class="login-back" style="padding-top: 10px">
+              <span [routerLink]="['/login']">Iniciar sesión </span>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->

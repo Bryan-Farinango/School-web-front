@@ -1,0 +1,235 @@
+<div>
+  <div class="color-header"></div>
+  <div fxLayout="column" fxLayoutAlign="start center">
+    <br />
+    <br />
+
+    <div class="card">
+      <mat-vertical-stepper
+        #verticalStepper="matVerticalStepper"
+        [linear]="true"
+      >
+        <mat-step [stepControl]="verticalAccountFormGroup">
+          <form [formGroup]="verticalAccountFormGroup">
+            <ng-template matStepLabel>Crear Usuario</ng-template>
+
+            <div class="heading">Crea un usuario</div>
+            <div class="subheading">Administra tus usuarios con su rol.</div>
+
+            <div class="content" fxLayout="column" fxLayoutGap="8px">
+              <mat-form-field fxFlex="auto">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="name" matInput required />
+                <mat-hint>Primer nombre.</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="auto">
+                <mat-label>Apellido</mat-label>
+                <input formControlName="lastName" matInput required />
+                <mat-hint>Primer Apellido</mat-hint>
+              </mat-form-field>
+
+              <div
+                fxLayout="column"
+                fxLayout.gt-xs="row"
+                fxLayoutGap="8px"
+                fxLayoutGap.gt-xs="24px"
+              >
+                <mat-form-field fxFlex="auto">
+                  <mat-label>Correo electrónico</mat-label>
+                  <input formControlName="email" matInput required />
+                  <mat-hint align="end">example@example.com</mat-hint>
+                </mat-form-field>
+
+                <div fxFlex="auto" fxLayout="row" fxLayoutGap="8px">
+                  <mat-form-field fxFlex="1 1 auto">
+                    <mat-label>Rol</mat-label>
+                    <mat-select formControlName="rol" required>
+                      <mat-option
+                        *ngFor="let option of roleOptions"
+                        [value]="option"
+                        >{{ option }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field fxFlex="2 1 auto">
+                    <mat-label>Teléfono</mat-label>
+                    <input formControlName="phone" matInput required />
+                    <mat-hint align="end"></mat-hint>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="actions"
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              fxLayoutGap="8px"
+            >
+              <button
+                (click)="verticalStepper.reset()"
+                [disabled]="verticalAccountFormGroup.pristine"
+                mat-button
+                type="button"
+                class="button-color"
+                style="color: white"
+              >
+                RESETEAR
+              </button>
+              <button
+                [disabled]="verticalAccountFormGroup.invalid"
+                mat-raised-button
+                matStepperNext
+                class="button-color"
+                style="color: white"
+              >
+                SIGUIENTE
+              </button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="verticalPasswordFormGroup">
+          <form [formGroup]="verticalPasswordFormGroup">
+            <ng-template matStepLabel>Crear contraseña</ng-template>
+
+            <div class="subheading">Introduce una contraseña.</div>
+
+            <div class="content" fxLayout="column" fxLayoutGap="8px">
+              <mat-form-field fxFlex="auto">
+                <mat-label>Contraseña</mat-label>
+                <input
+                  [type]="passwordInputType"
+                  formControlName="password"
+                  matInput
+                  required
+                />
+                <button
+                  (click)="showPassword()"
+                  *ngIf="passwordInputType === 'password'"
+                  mat-icon-button
+                  matSuffix
+                  type="button"
+                >
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button
+                  (click)="hidePassword()"
+                  *ngIf="passwordInputType === 'text'"
+                  mat-icon-button
+                  matSuffix
+                  type="button"
+                >
+                  <mat-icon>visibility_off</mat-icon>
+                </button>
+                <mat-hint>Mínimo debe contener 6 caracteres.</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="auto">
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input
+                  [type]="passwordInputType"
+                  formControlName="passwordConfirm"
+                  matInput
+                  required
+                />
+                <button
+                  (click)="showPassword()"
+                  *ngIf="passwordInputType === 'password'"
+                  mat-icon-button
+                  matSuffix
+                  type="button"
+                >
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button
+                  (click)="hidePassword()"
+                  *ngIf="passwordInputType === 'text'"
+                  mat-icon-button
+                  matSuffix
+                  type="button"
+                >
+                  <mat-icon>visibility_off</mat-icon>
+                </button>
+                <mat-hint>Introduce la misma contraseña.</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div
+              class="actions"
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              fxLayoutGap="8px"
+            >
+              <button
+                color="primary"
+                mat-button
+                matStepperPrevious
+                type="button"
+                class="button-color"
+                style="color: white"
+              >
+                ANTERIOR
+              </button>
+              <button
+                [disabled]="verticalPasswordFormGroup.invalid"
+                color="primary"
+                mat-raised-button
+                matStepperNext
+                class="button-color"
+                style="color: white"
+              >
+                SIGUIENTE
+              </button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="verticalConfirmFormGroup">
+          <form [formGroup]="verticalConfirmFormGroup">
+            <ng-template matStepLabel>Confirmar Usuario</ng-template>
+
+            <div class="subheading">Confirma el registro.</div>
+
+            <div class="content" fxLayout="column" fxLayoutGap="8px">
+              <mat-checkbox class="checkbox" formControlName="terms">
+                Acepto que los datos para la creación de usuario fueron
+                autorizados. *
+              </mat-checkbox>
+            </div>
+
+            <div
+              class="actions"
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              fxLayoutGap="8px"
+            >
+              <button
+                color="primary"
+                mat-button
+                matStepperPrevious
+                type="button"
+                class="button-color"
+                style="color: white"
+              >
+                ANTERIOR
+              </button>
+              <button
+                (click)="submit()"
+                [disabled]="verticalConfirmFormGroup.invalid"
+                color="primary"
+                mat-raised-button
+                matStepperNext
+                class="button-color"
+                style="color: white"
+              >
+                CREAR USUARIO
+              </button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<mat-toolbar fxLayout fxLayoutAlign="end center" *ngIf="showRol"
+  ><button
+    mat-button
+    class="profile"
+    [matMenuTriggerFor]="menuOptions"
+    [disableRipple]="true"
+    style="margin-right: 10px"
+  >
+    <span style="color: black">{{ responseInfo.rol }}</span>
+    <mat-icon style="color: black">settings</mat-icon>
+    <mat-menu #menuOptions="matMenu">
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </button></mat-toolbar
+>

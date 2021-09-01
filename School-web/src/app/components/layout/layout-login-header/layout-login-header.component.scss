@@ -1,0 +1,13 @@
+@import '../../../../assets/styles/styles.scss';
+
+.dec-logo {
+  display: block;
+  max-width: 190px;
+  width: 100%;
+  margin: 25px auto;
+  @media (min-width: $md) {
+    margin: 25px auto 60px;
+    max-width: 240px;
+    width: auto;
+  }
+}

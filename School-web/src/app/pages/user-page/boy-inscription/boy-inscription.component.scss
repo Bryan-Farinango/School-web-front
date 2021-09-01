@@ -1,0 +1,237 @@
+@import '../../../../assets/styles/styles.scss';
+.header {
+  background-color: $green-school;
+  height: 75px;
+}
+.content-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    margin-top: 200px;
+    padding: 30px;
+    width: 600px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    box-shadow: 1px 2px 2px rgba(124, 124, 124, 0.75);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    p {
+      font-family: 'Myriad Pro Bold';
+      font-weight: 700;
+      font-size: 28px;
+      color: $green-school;
+      line-height: 30px;
+    }
+    span {
+      margin-top: 20px;
+      font-family: 'Myriad Pro Regular';
+      font-weight: 500;
+      font-size: 20px;
+      color: black;
+      line-height: 23px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: $green-school;
+      color: white;
+      font-size: 16px;
+      font-family: 'Myriad Pro Semi Bold';
+      font-weight: 600;
+      border: none;
+      width: 100px;
+      height: 50px;
+      border-radius: 15px;
+    }
+  }
+}
+//step 2
+
+.body-inscription {
+  .color-header {
+    width: 100%;
+    height: 150px;
+    background-color: $green-school;
+    z-index: -2;
+    position: absolute;
+  }
+  :host {
+    background: url('/assets/img/backgrounds/form-wizard.jpg');
+    background-size: cover;
+    display: block;
+  }
+
+  .title {
+    color: white;
+  }
+  .form-subject {
+    .mat-form-field-appearance-outline.mat-focused
+      .mat-form-field-outline-thick {
+      color: black !important;
+    }
+  }
+  .card {
+    margin: $spacing;
+    max-width: 100%;
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    //@include mat-elevation(10);
+
+    .heading {
+      font: var(--font-title);
+    }
+
+    .subheading {
+      font: var(--font-subheading-1);
+    }
+
+    .content {
+      margin: $spacing/2 0;
+
+      .checkbox {
+        margin-top: $spacing/2;
+      }
+    }
+
+    .actions {
+      margin-top: $spacing;
+      padding: $spacing $spacing/3 0;
+    }
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: $spacing;
+    right: $spacing;
+    color: white;
+  }
+
+  .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: black !important;
+  }
+
+  ::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: black !important;
+  }
+
+  ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: black !important;
+  }
+
+  ::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: black !important;
+  }
+
+  .button-color {
+    background-color: $green-school;
+    columns: white;
+  }
+
+  button:disabled {
+    background-color: lightgrey;
+  }
+}
+
+.content-3 {
+  .header-content-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    button {
+      width: 140px;
+      height: 50px;
+      background-color: $green-school;
+      color: white;
+      font-family: 'Myriad Pro Bold';
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+    }
+  }
+  .card {
+    border: 1px solid lightgrey;
+
+    border-radius: 10px;
+  }
+
+  .c-details span {
+    font-weight: 300;
+    font-size: 13px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px;
+  }
+
+  .badge span {
+    background-color: #fffbec;
+    width: 110px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .badge2 span {
+    background-color: #fffbec;
+    width: 80px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: white;
+    background-color: $green-school;
+    justify-content: center;
+    align-items: center;
+  }
+  .badge3 span {
+    background-color: #fffbec;
+    width: 80px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: white;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .progress {
+    height: 10px;
+    border-radius: 10px;
+  }
+
+  .progress div {
+    background-color: #00edaa;
+  }
+
+  .text1 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .text2 {
+    color: #a5aec0;
+  }
+}

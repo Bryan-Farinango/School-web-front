@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div *ngIf="responseStudents?.length == 0" class="sin-data">
+      Sin solicitudes de matrícula
+    </div>
+    <div class="col-lg-4" *ngFor="let student of responseStudents">
+      <div class="card card-margin">
+        <div class="card-header no-border">
+          <h4 class="card-title" style="font-weight: bold; color: black">
+            {{ student.nombre_grado }}
+          </h4>
+        </div>
+        <div class="card-body pt-0">
+          <div class="widget-49">
+            <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-primary">
+                <mat-icon>face</mat-icon>
+              </div>
+              <div class="widget-49-meeting-info">
+                <span class="widget-49-pro-title"
+                  >{{ student.nombres }} {{ student.apellidos }}</span
+                >
+                <span class="widget-49-meeting-time"
+                  >{{ student.edad }} años</span
+                >
+              </div>
+            </div>
+            <ol
+              class="widget-49-meeting-points"
+              style="list-style: none; padding-left: 75px"
+            >
+              <li class="widget-49-meeting-item">
+                <span>- {{ student.identificacion }}</span>
+              </li>
+              <li class="widget-49-meeting-item">
+                <span>- {{ student.genero }}</span>
+              </li>
+              <li class="widget-49-meeting-item">
+                <span>- Jornada. {{ student.jornada }}</span>
+              </li>
+            </ol>
+            <div class="widget-49-meeting-action">
+              <a
+                class="btn btn-sm btn-flash-border-primary"
+                (click)="aprobar(student.estudiante_id)"
+                >Aprobar</a
+              >
+              <a
+                class="btn btn-sm btn-flash-border-primary"
+                (click)="rechazar(student.estudiante_id)"
+                >Rechazar</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

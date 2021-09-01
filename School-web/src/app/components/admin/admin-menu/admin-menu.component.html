@@ -1,0 +1,220 @@
+<div style="position: relative">
+  <mat-nav-list>
+    <span style="padding-left: 25px; font-weight: 400; color: lightgrey"
+      >EDUCACIÓN</span
+    >
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/home/students-request']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+        <span>Estudiantes</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/home/create-grade']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>school</mat-icon>
+        </button>
+        <span>Grado Escolar</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/home/create-subject']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>post_add</mat-icon>
+        </button>
+        <span>Crear Asignatura</span>
+      </a>
+    </mat-list-item>
+
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/home/create-user']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>person_add</mat-icon>
+        </button>
+        <span>Añadir Usuario</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="subDashboard = !subDashboard"
+    >
+      <!--<a>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>border_color</mat-icon> Dashboard
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+    </a>-->
+      <a
+        ><button mat-icon-button>
+          <mat-icon *ngIf="!subDashboard">expand_more</mat-icon>
+          <mat-icon *ngIf="subDashboard">keyboard_arrow_up</mat-icon>
+        </button>
+        <span>Dashboard</span>
+      </a>
+    </mat-list-item>
+    <ng-container *ngIf="subDashboard">
+      <mat-list-item
+        class="menu"
+        routerLinkActive="activeLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/home/admin-dashboard']"
+        style="padding-left: 30px"
+      >
+        <a>
+          <button mat-icon-button>
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+          <span>Usuarios</span>
+        </a>
+      </mat-list-item>
+      <mat-list-item
+        class="menu"
+        routerLinkActive="activeLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+        style="padding-left: 30px"
+        [routerLink]="['/home/signatures']"
+      >
+        <a
+          ><button mat-icon-button>
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+          <span>Asignaturas</span>
+        </a>
+      </mat-list-item>
+    </ng-container>
+
+    <br />
+
+    <span
+      style="
+        padding-left: 25px;
+        font-weight: 400;
+        color: lightgrey;
+        margin-top: 30px;
+      "
+      >TRANSPORTE</span
+    >
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/home/create-ruta']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>directions_bus</mat-icon>
+        </button>
+        <span>Crear Ruta</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/home/create-driver']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>approval</mat-icon>
+        </button>
+        <span>Añadir Transporte</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/home/solicitud-registro']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>group_add</mat-icon>
+        </button>
+        <span>Solicitud Registro</span>
+      </a>
+    </mat-list-item>
+
+    <!--SECCION DASHBOARD DE TRANSPOETE-->
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="transporteDashboard = !transporteDashboard"
+    >
+      <!--<a>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>border_color</mat-icon> Dashboard
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </a>-->
+      <a
+        ><button mat-icon-button>
+          <mat-icon *ngIf="!transporteDashboard">expand_more</mat-icon>
+          <mat-icon *ngIf="transporteDashboard">keyboard_arrow_up</mat-icon>
+        </button>
+        <span>Dashboard</span>
+      </a>
+    </mat-list-item>
+    <ng-container *ngIf="transporteDashboard">
+      <mat-list-item
+        class="menu"
+        routerLinkActive="activeLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/home/rutas']"
+        style="padding-left: 30px"
+      >
+        <a>
+          <button mat-icon-button>
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+          <span>Rutas</span>
+        </a>
+      </mat-list-item>
+      <mat-list-item
+        class="menu"
+        routerLinkActive="activeLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+        style="padding-left: 30px"
+        [routerLink]="['/home/drivers']"
+      >
+        <a
+          ><button mat-icon-button>
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+          <span>Transportistas</span>
+        </a>
+      </mat-list-item>
+    </ng-container>
+    <!---->
+  </mat-nav-list>
+</div>

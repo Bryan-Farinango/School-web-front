@@ -1,0 +1,359 @@
+@import '../../../assets/styles/styles.scss';
+.container-fluid {
+  background-color: white;
+}
+.clickable {
+  cursor: pointer;
+}
+table.mat-table {
+  border-spacing: 0;
+  width: 100%;
+}
+.header-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-end;
+}
+.login-button {
+  margin-right: 70px;
+  background-color: $green-school;
+  height: 50px;
+}
+.login-button2 {
+  background-color: $green-school;
+  height: 50px;
+  margin-bottom: 20px;
+}
+.example-card {
+  max-width: 500px;
+  margin-bottom: 40px;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(9, 27, 71, 0.55);
+  img {
+    text-align: center;
+    width: 70%;
+    height: 70%;
+  }
+}
+
+.example-header-image {
+  background-image: url('../../../assets/images/general/transporte-escolar.png');
+  background-size: cover;
+}
+.cards-rutas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.options-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-message {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Miryad Pro Bold';
+  font-weight: 700;
+  margin-bottom: 100px;
+}
+
+.transportista-add {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.city {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-login-driver {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+.login-form {
+  padding: 0 10% 0 10%;
+  width: 100%;
+  @media (max-width: $md) {
+    width: 100%;
+  }
+  button {
+    background-color: $green-school;
+  }
+}
+.form-login {
+  .mat-form-field {
+    width: 100%;
+  }
+  .mat-form-field-wrapper {
+    padding-bottom: -1.25em !important;
+  }
+  .mat-form-field-wrapper {
+    padding-bottom: -1.25em !important;
+  }
+  .mat-form-field-label {
+    color: rgba(0, 0, 0, 0.6) !important;
+  }
+  .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: black !important;
+  }
+  .mat-form-field-label {
+    color: rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h1 {
+    text-align: center;
+    font-weight: bold;
+  }
+  h2 {
+    text-align: center;
+    margin: 0px;
+  }
+
+  p {
+    text-align: right;
+    color: black;
+  }
+  p:hover {
+    color: $green-school;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .register-redirect:hover {
+    color: black !important;
+    cursor: auto;
+  }
+  .register-redirect {
+    padding-top: 20px;
+    text-align: center;
+    text-decoration: none !important;
+
+    span {
+      color: $green-school;
+      cursor: pointer;
+    }
+  }
+
+  .login-button {
+    background-color: $green-school;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+
+  .login-button-cancel {
+    background-color: $green-school;
+    height: 50px;
+    margin-bottom: 30px;
+    border: 0px;
+    color: white;
+    background-color: #adadad;
+  }
+
+  .login2 {
+    .row {
+      min-height: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .field {
+      display: flex;
+      flex-flow: column-reverse;
+      position: relative;
+      margin-top: 10px;
+      label,
+      input {
+        transition: all 0.2s;
+        touch-action: manipulation;
+      }
+
+      label {
+        color: #999999;
+        text-align: inherit;
+        padding: 0;
+      }
+
+      input {
+        z-index: 1;
+        background: transparent;
+      }
+
+      input:placeholder-shown + label {
+        cursor: text;
+        max-width: 66.66%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform-origin: left bottom;
+        transform: translate(10px, 1.9rem) scale(1.2);
+        font-size: 12px;
+        @media (min-width: $md) {
+          transform: translate(10px, 2rem) scale(1.2);
+        }
+      }
+
+      ::-webkit-input-placeholder {
+        opacity: 0;
+        transition: inherit;
+      }
+
+      ::-moz-placeholder {
+        opacity: 0;
+        transition: inherit;
+      }
+
+      input:focus::-webkit-input-placeholder {
+        opacity: 1;
+      }
+
+      input:focus::-moz-placeholder {
+        opacity: 1;
+      }
+
+      input:not(:placeholder-shown) + label,
+      input:focus + label {
+        transform: translate(10px, 0) scale(1);
+        color: $green-school;
+      }
+      img {
+        width: 18px;
+        height: 19px;
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        z-index: 1;
+        cursor: pointer;
+      }
+    }
+    h1 {
+      font-size: 16px;
+      line-height: 19px;
+      color: $green-school;
+      text-align: center;
+      font-family: 'Myriad Pro Regular';
+      @media (min-width: $md) {
+        font-size: 20px;
+        line-height: 21.6px;
+      }
+    }
+    input {
+      display: block;
+      width: 100%;
+      border: 1px solid $green-school;
+      text-decoration: none;
+      border-radius: 17px;
+      color: $green-school;
+      font-size: 14px;
+      line-height: 16px;
+      padding: 10px 50px 10px 8px;
+      box-shadow: 1px 1px 1px rgba(124, 124, 124, 0.75);
+      @media (min-width: $md) {
+        box-shadow: none;
+        font-size: 16px;
+        line-height: 19px;
+      }
+      &::placeholder {
+        color: #999999;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    .errors {
+      display: inline-flex;
+      flex-direction: column;
+      padding-top: 10px;
+      max-width: 50%;
+      .text-danger {
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+        line-height: 12px;
+        color: #c1272d;
+        img {
+          padding: 0 3px;
+        }
+        @media (min-width: $md) {
+          font-size: 12px;
+        }
+      }
+      @media (min-width: $md) {
+        max-width: auto;
+      }
+    }
+    .recuperar-contrasena {
+      display: flex;
+      float: right;
+      color: $turquoise-school;
+      font-size: 10px;
+      padding: 10px 0 25px;
+      display: block;
+      cursor: pointer;
+      text-decoration: underline;
+      font-family: 'Myriad Pro Regular';
+      @media (min-width: $md) {
+        display: inline-flex;
+        font-size: 12px;
+        padding: 10 0 30px;
+      }
+    }
+    button {
+      font-family: 'Myriad Pro Regular';
+      display: block;
+      width: 100%;
+      border-radius: 17px;
+      background-color: $green-school;
+      font-size: 18px;
+      color: #ffffff;
+      letter-spacing: 1.8px;
+      line-height: 21.6px;
+      margin-bottom: 30px;
+      border: none;
+      padding: 10px 0;
+      box-shadow: 1px 1px 1px rgba(124, 124, 124, 0.75);
+      &:focus {
+        outline: none;
+      }
+      @media (min-width: $md) {
+        box-shadow: none;
+      }
+    }
+    p {
+      text-align: center;
+      line-height: 16.8px;
+      font-size: 14px;
+      color: $green-school;
+      span {
+        color: $turquoise-school;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      @media (min-width: $md) {
+        font-size: 16px;
+      }
+    }
+  }
+}

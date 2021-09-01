@@ -1,0 +1,66 @@
+<div class="header"></div>
+<div class="container">
+  <div class="row">
+    <div
+      class="col-lg-4 cards-container"
+      *ngFor="let option of responseProcess"
+    >
+      <div class="card card-margin">
+        <div class="card-header no-border">
+          <h5 class="card-title">{{ option.notificacion_tema }}</h5>
+        </div>
+        <div class="card-body pt-0">
+          <div class="widget-49">
+            <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-primary">
+                <mat-icon>notifications</mat-icon>
+              </div>
+              <div class="widget-49-meeting-info">
+                <span class="widget-49-pro-title">{{
+                  option.notificacion_titulo
+                }}</span>
+                <span class="widget-49-meeting-time">{{
+                  option.notificacion_fecha
+                }}</span>
+              </div>
+            </div>
+            <div class="body-text" style="margin-top: 10px">
+              <span
+                >{{ option.notificacion_grado }} -
+                {{ option.notificacion_materia }}</span
+              >
+              <br />
+              <span
+                >Profesor: {{ option.notificacion_profesor }}
+                {{ option.notificacion_profesor_apellidos }}</span
+              >
+              <br />
+              <br />
+              <span style="font-weight: bold">Estudiante</span>
+              <mat-divider></mat-divider>
+              <span
+                >{{ option.notificacion_nombres }}
+                {{ option.notificacion_apellidos }}</span
+              >
+              <br />
+              <br />
+              <span style="font-weight: bold">Mensaje</span>
+              <mat-divider></mat-divider>
+              <span>{{ option.notificacion_mensaje }}</span>
+            </div>
+            <div class="widget-49-meeting-action">
+              <a
+                class="btn btn-sm btn-flash-border-primary"
+                (click)="deleteNotification(option.notificacion_id)"
+                >Visto</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="responseProcess?.length === 0" class="notifications">
+      <span>Aún no tienes notificaciones.</span>
+    </div>
+  </div>
+</div>

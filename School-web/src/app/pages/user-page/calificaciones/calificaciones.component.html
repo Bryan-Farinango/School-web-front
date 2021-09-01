@@ -1,0 +1,213 @@
+<div class="header"></div>
+<div class="container">
+  <div class="filtro-busqueda">
+    <div>
+      <form [formGroup]="searchForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Estudiante</mat-label>
+          <mat-select formControlName="student">
+            <mat-option value="todos">Todos</mat-option>
+            <mat-option
+              *ngFor="let option of responseStudents"
+              [value]="option._id"
+              >{{ option.nombres }} {{ option.apellidos }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <button (click)="search()">Buscar</button>
+      </form>
+    </div>
+  </div>
+  <div class="container registros">
+    <div
+      class="col-md-10"
+      *ngFor="let nota of responseNotas"
+      style="margin-bottom: 3rem"
+    >
+      <div class="card p-3 mb-2">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="icon" style="background-color: cornflowerblue">
+              <mat-icon style="color: white">note_alt</mat-icon>
+            </div>
+            <div class="ms-2 c-details">
+              <h4 class="mb-0" style="font-weight: bold">
+                {{ nota.nota_estudiante_nombres }}
+                {{ nota.nota_estudiante_apellidos }}
+              </h4>
+              <span
+                >{{ nota.nota_estudiante_quimestre }} -
+                {{ nota.nota_estudiante_nombre_asignatura }}</span
+              >
+            </div>
+          </div>
+          <div class="badge">
+            <span> {{ nota.nota_estudiante_grado }} </span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p style="font-weight: bold; margin: 0">
+            Descripción:
+            <span style="font-weight: normal">
+              {{ nota.nota_estudiante_descripcion }}
+            </span>
+          </p>
+          <p style="font-weight: bold; margin: 0">
+            Fecha creación:
+            <span style="font-weight: normal"> {{ nota.fecha }} </span>
+          </p>
+          <p style="font-weight: bold">
+            Profesor:
+            <span style="font-weight: normal">
+              {{ nota.nota_estudiante_nombres_profesor }}
+              {{ nota.nota_estudiante_apellidos_profesor }}
+            </span>
+          </p>
+
+          <div class="parcial1">
+            <mat-divider></mat-divider>
+            <div class="notas">
+              <span>Parcial 1.</span>
+              <div class="calificaciones">
+                <!--sobre este iterar-->
+                <div class="puntaje">
+                  <span>Nota 1</span>
+                  <p>{{ nota.parcial1.nota_1 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 2</span>
+                  <p>{{ nota.parcial1.nota_2 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 3</span>
+                  <p>{{ nota.parcial1.nota_3 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 4</span>
+                  <p>{{ nota.parcial1.nota_4 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 5</span>
+                  <p>{{ nota.parcial1.nota_5 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 6</span>
+                  <p>{{ nota.parcial1.nota_6 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span style="color: cornflowerblue"> Total</span>
+                  <p>{{ nota.parcial1.total }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="parcial1">
+            <mat-divider></mat-divider>
+            <div class="notas">
+              <span>Parcial 2</span>
+              <div class="calificaciones">
+                <!--sobre este iterar-->
+                <div class="puntaje">
+                  <span>Nota 1</span>
+                  <p>{{ nota.parcial2.nota_1 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 2</span>
+                  <p>{{ nota.parcial2.nota_2 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 3</span>
+                  <p>{{ nota.parcial2.nota_3 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 4</span>
+                  <p>{{ nota.parcial2.nota_4 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 5</span>
+                  <p>{{ nota.parcial2.nota_5 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 6</span>
+                  <p>{{ nota.parcial2.nota_6 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span style="color: cornflowerblue"> Total</span>
+                  <p>{{ nota.parcial2.total }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="parcial1">
+            <mat-divider></mat-divider>
+            <div class="notas">
+              <span>Parcial 3.</span>
+              <div class="calificaciones">
+                <!--sobre este iterar-->
+                <div class="puntaje">
+                  <span>Nota 1</span>
+                  <p>{{ nota.parcial3.nota_1 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 2</span>
+                  <p>{{ nota.parcial3.nota_2 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 3</span>
+                  <p>{{ nota.parcial3.nota_3 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 4</span>
+                  <p>{{ nota.parcial3.nota_4 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 5</span>
+                  <p>{{ nota.parcial3.nota_5 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span>Nota 6</span>
+                  <p>{{ nota.parcial3.nota_6 }}</p>
+                </div>
+                <div class="puntaje">
+                  <span style="color: cornflowerblue"> Total</span>
+                  <p>{{ nota.parcial3.total }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 100%"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div class="mt-3 final-card">
+              <p
+                style="
+                  font-weight: bold;
+                  margin-right: 60px;
+                  color: cornflowerblue;
+                "
+              >
+                Nota Quimestral:
+                <span style="font-weight: normal; color: black">
+                  {{ nota.nota_final }} &nbsp;
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sin-registro" *ngIf="responseNotas?.length == 0">
+      <span>No se encontraron registros.</span>
+    </div>
+  </div>
+</div>

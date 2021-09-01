@@ -1,0 +1,309 @@
+<div class="header-button" style="padding-top: 20px">
+  <button
+    class="login-button"
+    color="primary"
+    type="submit"
+    mat-flat-button
+    [routerLink]="['/home/create-ruta']"
+  >
+    Crear Ruta
+  </button>
+</div>
+<div *ngIf="message" class="empty-message">
+  <span style="font-family: 'Myriad Pro Bold'; font-weight: 700"
+    >No existen Rutas creadas.</span
+  >
+</div>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <div class="cards-rutas">
+      <mat-card class="example-card" *ngFor="let ruta of responseProcess">
+        <mat-card-header>
+          <mat-card-title
+            >{{ ruta.titulo_ruta }}, Ruta {{ ruta.numero_ruta }}</mat-card-title
+          >
+          <mat-card-subtitle style="text-align: left">
+            <form [formGroup]="rutaOptionsForm">
+              <div class="transportista-add">
+                <ng-template #contentEdit let-c="close" let-d="dismiss">
+                  <div class="modal-header">
+                    <h2>Editar</h2>
+                  </div>
+                  <div class="modal-body1">
+                    <div class="container-form login-form">
+                      <form
+                        class="form-login-driver"
+                        [formGroup]="rutaOptionsForm"
+                        (ngSubmit)="onUpdateTransportista(f)"
+                        #f="ngForm"
+                      >
+                        <div class="login">
+                          <div class="mb-3">
+                            <label class="form-label"
+                              >Selecciona un transportista</label
+                            >
+                            <select class="form-select" formControlName="name">
+                              <option
+                                *ngFor="let option of rutaOptions"
+                                [value]="option"
+                              >
+                                {{ option }}
+                              </option>
+                            </select>
+                          </div>
+                          <button
+                            type="submit"
+                            (click)="d('Cross click')"
+                            style="
+                              background-color: #7ed957;
+                              color: white;
+                              border-radius: 10px;
+                              border: 1px solid #7ed957;
+                              margin-right: 10px;
+                              height: 30px;
+                            "
+                          >
+                            Actualizar
+                          </button>
+                          <button
+                            type="button"
+                            (click)="d('Cross click')"
+                            style="
+                              background-color: gainsboro;
+                              color: white;
+                              border-radius: 10px;
+                              border: 1px solid gainsboro;
+                              height: 30px;
+                            "
+                          >
+                            Cancelar
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </ng-template>
+                <span
+                  class="badge badge-secondary"
+                  style="
+                    background-color: lightseagreen;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    height: 20px;
+                  "
+                  *ngIf="ruta.transportista_id == 'empty'"
+                  >Sin Transportista Asignado
+                </span>
+                <span
+                  class="badge badge-secondary"
+                  style="
+                    background-color: lightseagreen;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    height: 20px;
+                    text-align: left;
+                  "
+                  *ngIf="ruta.transportista_id != 'empty'"
+                  >{{ ruta.nombre_transportista }}
+                  {{ ruta.apellido_transportista }}
+                </span>
+                <mat-icon
+                  style="cursor: pointer"
+                  (click)="onAddTransportista(ruta.ruta_id)"
+                  *ngIf="ruta.transportista_id == 'empty'"
+                  >add_circle</mat-icon
+                >
+                <mat-icon
+                  style="cursor: pointer"
+                  (click)="
+                    onDeleteTransportista(ruta.transportista_id, ruta.ruta_id)
+                  "
+                  *ngIf="ruta.transportista_id != 'empty'"
+                  >delete</mat-icon
+                >
+              </div>
+            </form>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="../../../assets/images/general/transporte-escolar.png"
+          alt="Photo of a Shiba Inu"
+          style="padding-top: 10px"
+        />
+        <mat-card-content
+          style="
+            text-align: center;
+
+            background-color: white;
+            padding-bottom: 20px;
+
+            border-top: 8px solid black;
+          "
+        >
+          <br />
+          <div class="city">
+            <mat-icon>location_on</mat-icon>
+            <span style="font-weight: bold; font-size: 20px"
+              >{{ ruta.ciudad }}
+            </span>
+          </div>
+          <br />
+          <div class="sectores" style="text-align: justify !important">
+            <div class="Sector1">
+              <span style="font-weight: bold">Sector 1. </span>
+              <span>{{ ruta.sector_1 }}</span>
+            </div>
+            <div class="Sector2">
+              <span style="font-weight: bold">Sector 2. </span>
+              <span>{{ ruta.sector_2 }}</span>
+            </div>
+            <div class="Sector3">
+              <span style="font-weight: bold">Sector 3. </span>
+              <span>{{ ruta.sector_3 }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="options-card">
+          <button
+            mat-button
+            (click)="
+              openModalEditar(
+                ruta.ruta_id,
+                ruta.titulo_ruta,
+                ruta.numero_ruta,
+                ruta.ciudad,
+                ruta.sector_1,
+                ruta.sector_2,
+                ruta.sector_3
+              )
+            "
+          >
+            EDITAR
+          </button>
+
+          <button mat-button (click)="ondeleteRuta(ruta.ruta_id)">
+            ELIMINAR
+          </button>
+        </mat-card-actions>
+        <ng-template #contentEditAll let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h2>Editar</h2>
+          </div>
+          <div class="modal-body1">
+            <div class="container-form login-form">
+              <form
+                class="form-login"
+                [formGroup]="editAllForm"
+                (ngSubmit)="onUpdate(f, ruta.ruta_id)"
+                #f="ngForm"
+              >
+                <div class="login">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Título de la ruta</label
+                    >
+                    <input
+                      placeholder="Titulo de ruta"
+                      maxlength="50"
+                      type="text"
+                      formControlName="title"
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Número de Ruta</label
+                    >
+                    <input
+                      type="text"
+                      name="nombre"
+                      formControlName="number"
+                      required
+                      maxlength="50"
+                      class="form-control"
+                      placeholder="numero de ruta"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Ciudad</label
+                    >
+                    <input
+                      type="text"
+                      name="phone"
+                      formControlName="city"
+                      required
+                      placeholder="ciudad"
+                      maxlength="50"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Sector 1</label
+                    >
+                    <input
+                      type="text"
+                      name="phone"
+                      formControlName="sector1"
+                      required
+                      placeholder="sector 1"
+                      maxlength="50"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Sector 2</label
+                    >
+                    <input
+                      type="text"
+                      name="phone"
+                      formControlName="sector2"
+                      required
+                      placeholder="sector 2"
+                      maxlength="50"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Sector 3</label
+                    >
+                    <input
+                      type="text"
+                      name="phone"
+                      formControlName="sector3"
+                      required
+                      placeholder="sector 3"
+                      maxlength="50"
+                      class="form-control"
+                    />
+                  </div>
+
+                  <button
+                    class="login-button2"
+                    color="primary"
+                    type="submit"
+                    mat-flat-button
+                    (click)="d('Cross click')"
+                  >
+                    Actualizar
+                  </button>
+                  <button
+                    class="login-button-cancel"
+                    type="button"
+                    (click)="d('Cross click')"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-template>
+      </mat-card>
+    </div>
+  </div>
+</div>

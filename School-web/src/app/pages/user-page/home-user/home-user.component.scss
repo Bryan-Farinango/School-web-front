@@ -1,0 +1,22 @@
+mat-toolbar {
+  background-color: rgb(252, 252, 252);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 9999;
+}
+
+.mat-button-toggle-focus-overlay {
+  display: none;
+}
+img {
+  width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+span {
+  padding-right: 10px;
+}
+.profile {
+  height: 64px;
+}

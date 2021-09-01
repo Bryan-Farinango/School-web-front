@@ -1,0 +1,140 @@
+<div class="container-fluid background-layout-login">
+  <div class="login-bg"></div>
+  <div class="login-form-init">
+    <div class="col-md-6 offset-md-3">
+      <br />
+      <app-layout-login-header></app-layout-login-header>
+      <br /><br />
+      <div class="container-form">
+        <form
+          class="form-login"
+          [formGroup]="loginForm"
+          (ngSubmit)="onLogin(f, content)"
+          #f="ngForm"
+        >
+          <div class="login">
+            <h1>Inicia sesión</h1>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Correo</mat-label>
+              <input
+                type="text"
+                name="email"
+                formControlName="email"
+                matInput
+                #fieldEmail
+                required
+                email
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                placeholder="test@test.com"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error
+                *ngIf="
+                  f.submitted && loginForm.controls['email'].hasError('pattern')
+                "
+              >
+                Introduce un correo electrónico válido
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Contraseña</mat-label>
+              <input
+                name="password"
+                [type]="hide ? 'password' : 'text'"
+                matInput
+                placeholder="prueba123"
+                required
+                formControlName="password"
+              />
+
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                (click)="hide = !hide"
+              >
+                <mat-icon>lock</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <div class="errors">
+              <mat-error
+                *ngIf="
+                  f.submitted &&
+                  (loginForm.controls['email'].hasError('required') ||
+                    loginForm.controls['password'].hasError('required'))
+                "
+              >
+                Ingresa un correo y contraseña <br /><br />
+              </mat-error>
+              <div *ngIf="verified" class="text-danger">
+                Correo electrónico no verificado. Revisa tu bandeja de entrada y
+                valida tu cuenta<br /><br />
+              </div>
+              <div *ngIf="errorAuth" class="text-danger">
+                Correo o contraseña incorrecto<br /><br />
+              </div>
+              <div *ngIf="manyRequestError" class="text-danger">
+                El acceso a esta cuenta se ha desactivado temporalmente<br /><br />
+              </div>
+            </div>
+            <p
+              class="recuperar-contrasena"
+              [routerLink]="['/recuperar-contrasena']"
+              for="password"
+            >
+              <span> ¿Olvidaste tu contraseña?</span>
+            </p>
+            <button
+              class="login-button"
+              color="primary"
+              type="submit"
+              mat-flat-button
+            >
+              Iniciar Sesión
+            </button>
+
+            <p class="register-redirect">
+              No eres miembro?
+              <span [routerLink]="['/registro']">Crea una cuenta</span>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4
+      class="modal-title text-center"
+      id="modal-basic-title"
+      *ngIf="!chargeImg"
+    >
+      ¡Ooops!
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" *ngIf="chargeImg">
+    <div class="chargeImage">
+      <img src="assets/images/general/charge-dec.gif" alt="charge" />
+    </div>
+  </div>
+  <div class="modal-body" *ngIf="!chargeImg">
+    <p class="text-center sub-title">Correo electrónico no verificado.</p>
+    <p class="text-center">
+      ¿Necesitas un nuevo link de activación?
+      <br />
+      Solicítalo <span (click)="onSendEmail()">aquí</span>
+    </p>
+  </div>
+</ng-template>

@@ -1,0 +1,75 @@
+<mat-toolbar fxLayout fxLayoutAlign="center center" style="position: fixed">
+  <button
+    mat-button
+    class="profile"
+    [disableRipple]="true"
+    style="margin-right: 10px"
+  >
+    <mat-icon style="color: black; margin-right: 10px">home</mat-icon>
+    <span style="color: black">Inicio</span>
+  </button>
+  <button
+    mat-button
+    class="profile"
+    [disableRipple]="true"
+    style="margin-right: 10px"
+    [routerLink]="['/user-page/create-inscription']"
+  >
+    <mat-icon style="color: black; margin-right: 10px">article</mat-icon>
+    <span style="color: black">Matrículas</span>
+  </button>
+  <button
+    mat-button
+    class="profile"
+    [disableRipple]="true"
+    style="margin-right: 10px"
+    [routerLink]="['/user-page/calificaciones']"
+  >
+    <mat-icon style="color: black; margin-right: 10px">sticky_note_2</mat-icon>
+    <span style="color: black">Calificaciones</span>
+  </button>
+  <button
+    mat-button
+    class="profile"
+    [disableRipple]="true"
+    style="margin-right: 10px"
+    [routerLink]="['/user-page/notifications']"
+  >
+    <mat-icon style="color: black; margin-right: 10px"
+      >mark_email_unread</mat-icon
+    >
+    <span style="color: black">Notificaciones</span>
+  </button>
+  <button
+    mat-button
+    class="profile"
+    [disableRipple]="true"
+    style="margin-right: 10px"
+    [routerLink]="['/user-page/user-transporte']"
+  >
+    <mat-icon style="color: black; margin-right: 10px"
+      >directions_bus_filled</mat-icon
+    >
+    <span style="color: black">Transporte</span>
+  </button>
+  <button
+    mat-button
+    class="profile"
+    [matMenuTriggerFor]="menuOptions"
+    [disableRipple]="true"
+    style="margin-right: 10px"
+  >
+    <mat-icon style="color: black; margin-right: 10px">person</mat-icon>
+    <span style="color: black">Perfil</span>
+
+    <mat-menu #menuOptions="matMenu">
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </button>
+</mat-toolbar>
+<div>
+  <router-outlet></router-outlet>
+</div>

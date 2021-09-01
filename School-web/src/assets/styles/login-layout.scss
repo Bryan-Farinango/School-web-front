@@ -1,0 +1,50 @@
+@import './variables.scss';
+
+.background-layout-login {
+  min-height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: absolute;
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73cccccc', endColorstr='#73f2f2f2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  @media (min-width: $md) {
+    /* background-image: url('/assets/images/login/art-izq-layout.svg'),
+      url('/assets/images/login/art-der-layout.svg');*/
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-size: 200px, 900px;
+    background-position: left center, right enter;
+  }
+  @media (min-width: $xl) {
+    background-size: 320px, 320px;
+    background-position: left top, right bottom;
+  }
+  .row {
+    min-height: 100vh;
+    padding: 20px 0;
+    position: relative;
+    @media (min-width: $md) {
+      padding: 0;
+    }
+    .container-body {
+      padding: 0 30px;
+      @media (min-width: $md) {
+        padding: 0;
+      }
+      .box-content {
+        @media (min-width: $sm) {
+          max-width: 350px;
+          margin: 0 auto;
+        }
+        @media (min-width: $md) {
+          max-width: 390px;
+          margin: 0 auto;
+          box-shadow: 0 0 6px rgba(9, 27, 71, 0.75);
+          border-radius: 10px;
+          background-color: rgba(255, 255, 255, 0.7);
+          padding: 35px 22px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,257 @@
+<div>
+  <div class="container-fluid dataTable-portafolio">
+    <div class="row-wrap-items-portafolio">
+      <div class="row" style="z-index: -2 !important">
+        <div class="col-md-12 col-xxl-12">
+          <div class="container-table">
+            <table
+              datatable
+              [dtOptions]="dtOptions"
+              class="row-border compact hover"
+            >
+              <br />
+              <thead>
+                <tr class="desktop-table">
+                  <th class="text-center">Nombre Materia</th>
+                  <th class="text-center">Descripción</th>
+                  <th class="text-center">Año Escolar</th>
+                  <th class="text-center">Grado</th>
+                  <th class="text-center">Profesor</th>
+
+                  <th>&nbsp;</th>
+                </tr>
+                <tr class="mobile-table">
+                  <th class="text-start">Nombre del proceso</th>
+                  <th colspan="5" class="text-end white-space">
+                    <div (click)="showFilterAdvancedSearch()">
+                      <span class="circle-option">&nbsp;</span>
+                      <span class="circle-option">&nbsp;</span>
+                      <span class="circle-option">&nbsp;</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody *ngIf="processList?.length != 0">
+                <tr class="desktop-table" *ngFor="let process of processList">
+                  <!--TEMPLATE-->
+                  <ng-template #contentEdit let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h2>Editar</h2>
+                    </div>
+                    <div class="modal-body1">
+                      <div class="container-form login-form">
+                        <form
+                          class="form-login"
+                          [formGroup]="editForm"
+                          (ngSubmit)="onUpdate(f, process._id)"
+                          #f="ngForm"
+                        >
+                          <div class="login">
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlInput1"
+                                class="form-label"
+                                >Nombre Materia</label
+                              >
+                              <input
+                                placeholder="Nombre Materia"
+                                maxlength="50"
+                                type="text"
+                                formControlName="name"
+                                required
+                                class="form-control"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlInput1"
+                                class="form-label"
+                                >Descripción</label
+                              >
+                              <input
+                                type="text"
+                                name="nombre"
+                                formControlName="description"
+                                required
+                                maxlength="50"
+                                class="form-control"
+                                placeholder="Descripción"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Año Escolar</label>
+                              <select
+                                class="form-select"
+                                required
+                                formControlName="year"
+                              >
+                                <option
+                                  *ngFor="let option of yearOptions"
+                                  [selected]="option === process.anio_escolar"
+                                  [value]="option"
+                                >
+                                  {{ option }}
+                                </option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Grado Escolar</label>
+                              <select
+                                class="form-select"
+                                required
+                                formControlName="grade"
+                              >
+                                <option
+                                  *ngFor="let option of roleOptions"
+                                  [selected]="option === process.nombre_grado"
+                                  [value]="option"
+                                >
+                                  {{ option }}
+                                </option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label"
+                                >Asigna un profesor</label
+                              >
+                              <select
+                                class="form-select"
+                                required
+                                formControlName="teacher"
+                                placeholder="Aigna un profesor"
+                              >
+                                <option
+                                  *ngFor="let option of responseTeacher"
+                                  [selected]="
+                                    option.nombres === process.nombre_profesor
+                                  "
+                                  [value]="option._id"
+                                >
+                                  {{ option.nombres }}
+                                </option>
+                              </select>
+                            </div>
+                            <button
+                              class="login-button"
+                              color="primary"
+                              type="submit"
+                              mat-flat-button
+                              (click)="d('Cross click')"
+                            >
+                              Actualizar
+                            </button>
+                            <button
+                              class="login-button-cancel"
+                              type="button"
+                              (click)="d('Cross click')"
+                            >
+                              Cancelar
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <!--END TEMPLATE-->
+                  <td width="20%" class="text-start px-4 proces-title">
+                    {{ process.nombre_asignatura }}
+                  </td>
+                  <td width="20%" class="text-center white-space">
+                    {{ process.descripcion }}
+                  </td>
+                  <td width="10%" class="text-center">
+                    {{ process.anio_escolar }}
+                  </td>
+                  <td width="20%" class="text-center">
+                    {{ process.nombre_grado }}
+                  </td>
+                  <td width="20%" class="text-center">
+                    {{ process.nombre_profesor }}
+                  </td>
+
+                  <td width="10%" class="justify-content-center">
+                    <div class="icons">
+                      <mat-icon
+                        style="padding-right: 45px"
+                        (click)="
+                          openEditModal(
+                            process._id,
+                            process.nombre_asignatura,
+                            process.descripcion,
+                            process.anio_escolar,
+                            process.nombre_grado
+                          )
+                        "
+                        >edit</mat-icon
+                      >
+                      <mat-icon
+                        style="color: red"
+                        (click)="deleteUset(process._id)"
+                        >delete</mat-icon
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <!--
+                <tr class="mobile-table" *ngFor="let process of processList">
+                  <td width="63%" class="text-start" class="proces-title">
+                    <a class="title-process-mobile">{{ process.nombres }}</a>
+                    <br />
+                    <span class="text-small"
+                      >{{ process.apellidos }} - {{ process.email }}</span
+                    >
+                  </td>
+                  <td width="24%" class="text-start white-space">
+                    <div class="circle-state">&nbsp;</div>
+                    {{ process.rol }} <br /><span
+                      class="text-small type-process"
+                      >{{ process.telefono }}</span
+                    >
+                  </td>
+                  <td width="2%" class="text-center display-none">&nbsp;</td>
+                  <td WIDTH="2%" class="text-center display-none">&nbsp;</td>
+                  <td WIDTH="2%" class="text-center display-none">&nbsp;</td>
+                  <td width="7%" class="justify-content-center">
+                    
+                    <img
+                      src="assets/images/general/download-icon.svg"
+                      alt="Descarga"
+                      (click)="validateDownload(process._id)"
+                    />
+                    
+                  </td>
+                </tr>
+
+                -->
+              </tbody>
+
+              <tbody *ngIf="processList?.length == 0">
+                <tr>
+                  <td colspan="6" class="no-data-available text-center">
+                    <span>¡No se encontraron registros!</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="wrap-export-excel" *ngIf="processList?.length != 0">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="exportExcel()"
+              >
+                <img
+                  src="assets/images/general/export-icon.svg"
+                  alt="Exportar"
+                />Exportar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>
+
+<!-- Modal -->

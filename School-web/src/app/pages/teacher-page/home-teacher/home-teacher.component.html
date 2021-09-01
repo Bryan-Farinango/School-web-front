@@ -1,0 +1,32 @@
+<mat-sidenav-container>
+  <mat-sidenav opened="true" mode="side" style="position: fixed">
+    <fury-scrollbar class="sidenav-items" fxFlex="auto">
+      <div class="sidenav-user">
+        <div
+          style="margin-top: 2rem"
+          class="wrapCount"
+          id="dropdownMenuButton"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span>{{ displayName }}</span>
+        </div>
+
+        <h5 class="sidenav-user-email">{{ email }}</h5>
+
+        <div class="sidenav-user-icons" fxLayout="row">
+          <a mat-icon-button (click)="onLogout()">
+            <mat-icon>exit_to_app</mat-icon>
+          </a>
+        </div>
+      </div>
+      <app-teacher-menu></app-teacher-menu>
+    </fury-scrollbar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-admin-header></app-admin-header>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

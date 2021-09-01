@@ -1,0 +1,35 @@
+<div style="position: relative">
+  <mat-nav-list>
+    <span style="padding-left: 25px; font-weight: 400; color: lightgrey"
+      >EDUCACIÓN</span
+    >
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/teacher-page/techer-students']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+        <span>Emitir Comunicados</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item
+      class="menu"
+      routerLinkActive="activeLink"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLink]="['/teacher-page/teacher-notes']"
+    >
+      <a
+        ><button mat-icon-button>
+          <mat-icon>school</mat-icon>
+        </button>
+        <span>Calificaciones</span>
+      </a>
+    </mat-list-item>
+
+    <!---->
+  </mat-nav-list>
+</div>

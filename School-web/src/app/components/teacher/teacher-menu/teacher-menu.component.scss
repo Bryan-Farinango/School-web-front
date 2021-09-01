@@ -1,0 +1,30 @@
+@import '../../../../assets/styles/styles.scss';
+mat-nav-list {
+  width: 95%;
+  height: calc(100vh - 64px);
+  padding: 8px 0;
+}
+
+mat-list-item {
+  margin-top: 5px;
+  border-radius: 0 24px 24px 0;
+  transition: 0.2s all;
+}
+mat-list-item.menu:hover {
+  background-color: $green-school !important;
+}
+.activeLink {
+  background-color: $green-school !important;
+}
+a,
+a:link,
+a:visited,
+a:active {
+  color: white !important;
+  font-size: 14px;
+}
+
+a span {
+  display: inline-block;
+  padding-left: 10px;
+}

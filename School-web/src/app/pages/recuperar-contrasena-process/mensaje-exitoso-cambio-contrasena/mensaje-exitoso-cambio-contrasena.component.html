@@ -1,0 +1,31 @@
+<div class="container-fluid background-layout-login">
+  <div class="login-form">
+    <div class="col-md-6 offset-md-3">
+      <br />
+      <app-layout-login-header></app-layout-login-header>
+
+      <div class="container-form form-login">
+        <div class="container-body">
+          <div class="box-content">
+            <div class="verificacion-correo-body">
+              <h1 class="text-center">¡Listo!</h1>
+              <p class="text-center first-paragraph" style="color: black">
+                Tu contraseña ha sido actualizada con éxito.
+              </p>
+              <p class="text-center">
+                <span
+                  [routerLink]="['/login']"
+                  style="color: #7ed957; text-decoration: underline"
+                  >Inicia sesión</span
+                >
+              </p>
+              <mat-icon class="check-icon">check_circle</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->

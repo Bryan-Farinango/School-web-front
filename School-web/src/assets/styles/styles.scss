@@ -1,0 +1,168 @@
+@import './font.scss';
+@import './variables.scss';
+@import './login-layout.scss';
+@import './error-pages.scss';
+
+.toast-container {
+  width: 90%;
+  @media (min-width: $md) {
+    max-width: 313px;
+    width: 100%;
+  }
+  .cdk-global-overlay-wrapper,
+  .cdk-overlay-container {
+    z-index: 9999 !important;
+  }
+
+  .cdk-overlay-connected-position-bounding-box {
+    z-index: 99999 !important;
+  }
+  .toast-alert-message {
+    background-image: none !important;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-color: #fd98a9;
+    background-position: center left;
+    background-position-x: 22px;
+    padding: 10px 27px 10px 76px;
+    color: black;
+    font-family: 'Myriad Pro Regular';
+    font-size: 14px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    line-height: 15px;
+    pointer-events: auto;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.16);
+    @media (min-width: $md) {
+      padding: 19px 26px 17px 47px;
+      line-height: 20px;
+      background-position-x: 12px;
+    }
+    .toast-title {
+      font-family: 'Myriad Pro Bold';
+      font-size: 20px;
+      color: black;
+      line-height: 25.2px;
+    }
+    .toast-close-button {
+      border-left: 1px solid black;
+      padding: 18px 0 18px 17px;
+      margin: 0 0 0 10px;
+      color: black;
+      font-size: 24px;
+      top: 0;
+      right: 0;
+      text-shadow: none;
+      @media (min-width: $md) {
+        padding: 10px 0 10px 14px;
+        margin: 0;
+      }
+      span {
+        font-family: 'Myriad Pro Light';
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        opacity: 1;
+      }
+    }
+  }
+
+  .toast-success-message {
+    background-image: none !important;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-color: #00edaa;
+    background-position: center left;
+    background-position-x: 22px;
+    padding: 10px 27px 10px 76px;
+    color: black;
+    font-family: 'Myriad Pro Regular';
+    font-size: 14px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    line-height: 15px;
+    pointer-events: auto;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.16);
+    @media (min-width: $md) {
+      padding: 19px 26px 17px 47px;
+      line-height: 20px;
+      background-position-x: 12px;
+    }
+    .toast-title {
+      font-family: 'Myriad Pro Bold';
+      font-size: 20px;
+      color: black;
+      line-height: 25.2px;
+    }
+    .toast-close-button {
+      border-left: 1px solid #00c08b;
+      padding: 18px 0 18px 17px;
+      margin: 0 0 0 10px;
+      color: black;
+      font-size: 24px;
+      top: 0;
+      right: 0;
+      text-shadow: none;
+      @media (min-width: $md) {
+        padding: 10px 0 10px 14px;
+        margin: 0;
+      }
+      span {
+        font-family: 'Myriad Pro Light';
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.dataTables_wrapper .dataTables_filter {
+  float: none;
+  @media (min-width: $md) {
+    display: block;
+    float: right;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    margin-top: -60px;
+    margin-right: -15px;
+  }
+  @media (min-width: $lg) {
+    margin-right: -34px;
+  }
+  input {
+    width: 100%;
+    height: 21px;
+    background-color: #ffffff !important;
+    background-image: url('../../assets/images/general/search-icon.svg');
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    border: 1px solid $green-school;
+    padding-left: 20px;
+    font-family: 'Myriad Pro Regular';
+    font-size: 12px;
+    font-weight: 400;
+    color: $green-school;
+    border-radius: 5px;
+    @media (min-width: $md) {
+      width: 254px !important;
+      height: 31px;
+      font-size: 14px;
+      background-position: 6px;
+      background-size: 18px;
+      padding-left: 28px;
+      box-shadow: 0 0 4px rgba(9, 27, 71, 0.55);
+      border: none !important;
+    }
+  }
+}
+
+.teacher-modal {
+}

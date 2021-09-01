@@ -1,0 +1,31 @@
+<div class="container-fluid background-layout-login">
+  <div class="login-form">
+    <div class="col-md-6 offset-md-3">
+      <br />
+      <app-layout-login-header></app-layout-login-header>
+
+      <div class="container-form form-login">
+        <div class="container-body" *ngIf="!chargeImg">
+          <div class="box-content">
+            <div class="verificacion-correo-body">
+              <h1 class="text-center">¡Enviado!</h1>
+              <p class="text-center first-paragraph">
+                Verifica tu registro en tu correo electrónico y valida tu cuenta
+              </p>
+              <div class="text-center">
+                <span style="font-weight: bold"
+                  >¿No recibiste el correo electrónico ?</span
+                >
+                <br />
+                Mira en tu carpeta de correo no deseado
+              </div>
+              <mat-icon class="check-icon">check_circle</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->

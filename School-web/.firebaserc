@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-test-stupendo": {
+      "hosting": {
+        "dec-front": [
+          "login-test-stupendo"
+        ]
+      }
+    }
+  }
+}

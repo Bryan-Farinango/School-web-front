@@ -1,0 +1,139 @@
+body {
+  margin-top: 20px;
+  background: #fafafa;
+}
+.order-card {
+  color: #fff;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.bg-c-blue {
+  background: linear-gradient(45deg, #4099ff, #73b4ff);
+}
+
+.bg-c-green {
+  background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+}
+
+.bg-c-yellow {
+  background: linear-gradient(45deg, #ffb64d, #ffcb80);
+}
+
+.bg-c-pink {
+  background: linear-gradient(45deg, #ff5370, #ff869a);
+}
+
+.card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  border: none;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+  padding: 25px;
+}
+
+.order-card i {
+  font-size: 26px;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-form-field {
+  margin-top: 25px;
+  margin-left: 20px;
+}
+.form-select {
+  width: 150px;
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.button-search {
+  margin-left: 20px;
+  background-color: #7ed957;
+  color: white;
+  font-size: 15px;
+  font-family: 'Myriad Pro Bold';
+  font-weight: 700;
+  border-radius: 30px;
+  border: none;
+  width: 90px;
+  height: 40px;
+}
+
+.empty-response {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Myriad Pro Bold';
+  font-weight: 700;
+  margin-top: 40px;
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+.mat-form-field {
+  display: block;
+  position: relative;
+  text-align: left;
+}
+
+::ng-deep .mat-form-field {
+  margin-right: 20px !important;
+  margin-top: 25px !important;
+  margin-left: 20px !important;
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.first-button {
+  background-color: #7ed957;
+  color: white;
+  font-family: 'Myriad Pro Bold';
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 23px;
+  width: 120px;
+  height: 50px;
+}
+
+.second-button {
+  margin-left: 10px;
+  border: none;
+  background-color: lightgray;
+  color: white;
+  font-family: 'Myriad Pro Bold';
+  font-weight: 700;
+  font-size: 16px;
+  width: 120px;
+  height: 50px;
+  border-radius: 23px;
+}
