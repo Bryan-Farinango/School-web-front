@@ -8,19 +8,19 @@ export const environment = {
   production: false,
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   firebaseConfig: {
-    apiKey: 'AIzaSyBHd8F9-iH9DLlFW4QK1v6awJv5k8Oz6B8',
-    authDomain: 'school-web-b8fc2.firebaseapp.com',
-    projectId: 'school-web-b8fc2',
-    storageBucket: 'school-web-b8fc2.appspot.com',
-    messagingSenderId: '161151247861',
-    appId: '1:161151247861:web:ce4d1a8f0f6a6d737e6cbc',
-    measurementId: 'G-GZJVPK15GF',
+    apiKey: 'AIzaSyA9psawO5pyvfGCEQLu0OFPcUF_h4Mk0uw',
+    authDomain: 'school-web-d5e3f.firebaseapp.com',
+    projectId: 'school-web-d5e3f',
+    storageBucket: 'school-web-d5e3f.appspot.com',
+    messagingSenderId: '944413204150',
+    appId: '1:944413204150:web:1bf695ee806cb4417e9017',
+    measurementId: 'G-1PXBB8X6XX',
   },
   parcialOptions: ['Parcial 1', 'Parcial 2', 'Parcial 3'],
   topicNotification: ['Asistencia', 'General', 'Noticias'],
   quimestreOption: ['Primer Quimestre', 'Segundo Quimestre'],
   //credentials for drivers firebase
-  driverFirebaseApiKey: 'AIzaSyAtp_1k7RgfaMiPWuPA6fQYVxEUnJ2-c20',
+  driverFirebaseApiKey: 'AIzaSyBpDAB2JifxO--5ELLqee47eW0Z3bk3RdA',
 };
 
 /*
